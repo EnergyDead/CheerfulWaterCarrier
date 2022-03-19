@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Order } from 'src/app/dto/Order';
 import { OrderService } from '../shared/order.service';
 
 
@@ -11,6 +12,7 @@ import { OrderService } from '../shared/order.service';
 
 /** orders component*/
 export class OrdersComponent implements OnInit {
+  orders: Order = [];
 
   constructor(
     private router: Router,
@@ -18,6 +20,10 @@ export class OrdersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.GetOrders();
+  }
 
+  GetOrders(): void {
+    this.ordersService.GetOrders().subscribe(orders => this.orders = orders);
   }
 }

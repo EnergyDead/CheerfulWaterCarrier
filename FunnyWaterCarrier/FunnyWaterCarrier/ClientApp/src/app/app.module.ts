@@ -15,6 +15,10 @@ import { EditOrderComponent } from './orders/order-edit/order-edit.component';
   declarations: [
     AppComponent,
     NavMenuComponent,
+    OrderComponent,
+    OrdersComponent,
+    EditOrderComponent,
+    CreateOrderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
