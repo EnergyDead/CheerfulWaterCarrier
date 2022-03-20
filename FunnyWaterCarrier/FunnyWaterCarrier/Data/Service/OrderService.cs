@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FunnyWaterCarrier.Data.Service
 {
-    public class OrderService : IOrderService
+    public class OrderService : IOrder
     {
         OrderStub _orderStub;
         public OrderService()

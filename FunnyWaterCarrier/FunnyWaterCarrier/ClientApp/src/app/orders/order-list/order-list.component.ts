@@ -12,7 +12,7 @@ import { OrderService } from '../shared/order.service';
 
 /** orders component*/
 export class OrdersComponent implements OnInit {
-  orders: Order = [];
+  orders: Order[] = [];
 
   constructor(
     private router: Router,

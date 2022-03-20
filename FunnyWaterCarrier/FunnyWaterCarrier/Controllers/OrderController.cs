@@ -9,9 +9,9 @@ namespace FunnyWaterCarrier.Controllers
     [Route( "api/" )]
     public class OrderController : ControllerBase
     {
-        private readonly IOrderService _orderService;
+        private readonly IOrder _orderService;
 
-        public OrderController( IOrderService employeeService )
+        public OrderController( IOrder employeeService )
         {
             _orderService = employeeService;
         }

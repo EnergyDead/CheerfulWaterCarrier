@@ -13,6 +13,24 @@ export class OrderService {
     }
 
     public GetOrders(): Observable<Order[]> {
-        return this.http.get<Order[]>(this.baseUrl + 'api/orders');
+        const url = `${this.baseUrl}/api/orders`;
+        return this.http.get<Order[]>(url);
+    }
+
+    public GetOrder(id: number): Observable<Order> {
+        const url = `${this.baseUrl}/api/order/${id}`;
+        return this.http.get<Order>(url);
+    }
+
+    public AddOrder(order: Order): Observable<Order> {
+        const url = `${this.baseUrl}/api/add`;
+        // todo: проверить, может что-то ещё нужно
+        return this.http.post<Order>(url, order);
+    }
+
+    public EditOrder(order: Order): Observable<Order> {
+        const url = `${this.baseUrl}/api/order/${order.id}/edit`;
+        // todo: проверить, может что-то ещё нужно
+        return this.http.post<Order>(url, order);
     }
  }

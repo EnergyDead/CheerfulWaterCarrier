@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FunnyWaterCarrier.Data.Service
 {
-    public class TagService : ITagService
+    public class TagService : ITag
     {
         public ActionResult<Tag> AddTag( Tag tag )
         {

@@ -7,10 +7,10 @@ var builder = WebApplication.CreateBuilder( args );
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<ISubdivision, Subdivision>();
-builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<IEmployee, EmployeeService>();
+builder.Services.AddScoped<IOrder, OrderService>();
+builder.Services.AddScoped<ISubdivision, SubdivisionService>();
+builder.Services.AddScoped<ITag, TagService>();
 
 var app = builder.Build();
 

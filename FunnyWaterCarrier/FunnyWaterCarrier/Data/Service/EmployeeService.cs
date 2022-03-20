@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FunnyWaterCarrier.Data.Service
 {
-    public class EmployeeService : IEmployeeService
+    public class EmployeeService : IEmployee
     {
         public ActionResult AddEmployee( Employee employee )
         {
