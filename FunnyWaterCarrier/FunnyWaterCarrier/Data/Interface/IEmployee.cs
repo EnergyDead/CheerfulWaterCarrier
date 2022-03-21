@@ -7,8 +7,8 @@ namespace FunnyWaterCarrier.Data.Interface
     {
         public ActionResult<List<Employee>> GetEmployes();
         public ActionResult<Employee> GetEmployee( int id );
-        public ActionResult AddEmployee( Employee employee );
-        public ActionResult<Employee> EditEmployee( Employee employee );
-        public ActionResult DeleteEmployee( int id );
+        public bool AddEmployee( Employee employee );
+        public bool EditEmployee( Employee employee );
+        public bool DeleteEmployee( int id );
     }
 }

@@ -28,20 +28,20 @@ namespace FunnyWaterCarrier.Controllers
             return _orderService.GetOrder( id );
         }
 
-        [HttpGet( "order/{id}/edit" )]
-        public ActionResult<Order> EditOrder( Order order )
+        [HttpPost( "order/{id}/edit" )]
+        public bool EditOrder( Order order )
         {
             return _orderService.EditOrder( order );
         }
 
-        [HttpGet( "order/add" )]
-        public ActionResult<Order> AddOrder( Order order )
+        [HttpPost( "order/add" )]
+        public bool AddOrder( Order order )
         {
             return _orderService.AddOrder( order );
         }
 
-        [HttpGet( "order/{id}/delete" )]
-        public ActionResult<Order> DeleteOrder( int orderId )
+        [HttpPost( "order/{id}/delete" )]
+        public bool DeleteOrder( int orderId )
         {
             return _orderService.DeleteOrder( orderId );
         }

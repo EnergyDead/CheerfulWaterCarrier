@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public int EmployeeId { get; set; }
 
-        private List<Tag> _tags;
+        private List<Tag> _tags = new();
 
         public List<Tag> GetTags()
         {
@@ -15,10 +15,6 @@
 
         public void AddTags( Tag value )
         {
-            if ( _tags == null )
-            {
-                _tags = new List<Tag>();
-            }
             _tags.Add( value );
         }
     }

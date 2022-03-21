@@ -27,20 +27,20 @@ namespace FunnyWaterCarrier.Controllers
             return _employeeService.GetEmployee( id );
         }
 
-        [HttpGet( "employee/{id}/edit" )]
-        public ActionResult<Employee> EditEmployee( Employee employee )
+        [HttpPost( "employee/{id}/edit" )]
+        public bool EditEmployee( Employee employee )
         {
             return _employeeService.EditEmployee( employee );
         }
 
-        [HttpGet( "employee/{id}/delete" )]
-        public ActionResult<Employee> DeleteEmployee( int id )
+        [HttpPost( "employee/{id}/delete" )]
+        public bool DeleteEmployee( int id )
         {
             return _employeeService.DeleteEmployee( id );
         }
 
-        [HttpGet( "employee/add" )]
-        public ActionResult<Employee> AddEmployee( Employee employee )
+        [HttpPost( "employee/add" )]
+        public bool AddEmployee( Employee employee )
         {
             return _employeeService.AddEmployee( employee );
         }

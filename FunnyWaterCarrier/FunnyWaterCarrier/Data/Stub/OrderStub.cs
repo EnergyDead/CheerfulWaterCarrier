@@ -4,7 +4,7 @@ namespace FunnyWaterCarrier.Data.Stub
 {
     public class OrderStub
     {
-        private List<Order> _orders;
+        private static List<Order> _orders;
         public List<Order> Orders { get => _orders; set => _orders = value; }
 
         public OrderStub()

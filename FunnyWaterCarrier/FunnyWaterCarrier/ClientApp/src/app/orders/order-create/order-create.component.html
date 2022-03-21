@@ -1,1 +1,22 @@
-<h1>create order</h1>
+<form #create="ngForm">
+    <div class="order-tuning">
+      <div>
+        <label>Имя заказа</label>
+        <input ngModel name="name" type="text" placeholder="Имя заказа" class="add-name">
+      </div>
+      <div>
+        <label for="select">Исполнитель</label>
+        <select [(ngModel)]="selectedEmployee" name="employee" class="add-employee">
+          <option *ngFor="let employee of employes" [ngValue]="employee.id">{{employee.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="d-flex flex-column main">
+      <span *ngIf="isError" class="erorr">Ошибка! Не все поля заполнены..</span>
+      <div class="d-flex flex-row-reverse">
+        <button (click)="addOrder(order, create)" type="button" class="btn btn-create">Создать</button>
+      </div>
+    </div>
+
+    
+  </form>

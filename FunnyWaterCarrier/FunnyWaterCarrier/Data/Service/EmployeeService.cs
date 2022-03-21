@@ -13,25 +13,25 @@ namespace FunnyWaterCarrier.Data.Service
             _employes = new();
         }
 
-        public ActionResult AddEmployee( Employee employee )
+        public bool AddEmployee( Employee employee )
         {
             _employes.Employee.Add( employee );
-            return null;
+            return true;
         }
 
-        public ActionResult DeleteEmployee( int id )
+        public bool DeleteEmployee( int id )
         {
 
             var employee = _employes.Employee.FirstOrDefault( employee => employee.Id == id );
             _employes.Employee.Remove( employee );
-            return null;
+            return true;
         }
 
-        public ActionResult<Employee> EditEmployee( Employee newEmployee )
+        public bool EditEmployee( Employee newEmployee )
         {
             _employes.Employee.Where( employee => employee.Id == newEmployee.Id ).Select( employee => employee = newEmployee );
 
-            return null;
+            return true;
         }
 
         public ActionResult<List<Employee>> GetEmployes()

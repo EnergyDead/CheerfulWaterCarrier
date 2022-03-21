@@ -13,26 +13,28 @@ namespace FunnyWaterCarrier.Data.Service
             _orderStub = new();
         }
 
-        public ActionResult AddOrder( Order order )
+        public bool AddOrder( Order order )
         {
+            int index = _orderStub.Orders.Select( order => order.Id ).Max();
+            order.Id = index + 1;
             _orderStub.Orders.Add( order );
 
-            return null;
+            return true;
         }
 
-        public ActionResult DeleteOrder( int orderId )
+        public bool DeleteOrder( int orderId )
         {
             var order = _orderStub.Orders.FirstOrDefault( order => order.Id == orderId );
             _orderStub.Orders.Remove( order );
 
-            return null;
+            return true;
         }
 
-        public ActionResult EditOrder( Order newOrder )
+        public bool EditOrder( Order newOrder )
         {
             _orderStub.Orders.Where( order => order.Id == newOrder.Id ).Select( order => order = newOrder );
 
-            return null;
+            return true;
         }
 
         public Order GetOrder( int orderId )

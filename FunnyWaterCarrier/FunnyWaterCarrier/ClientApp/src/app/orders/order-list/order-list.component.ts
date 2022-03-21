@@ -20,14 +20,11 @@ export class OrdersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.GetOrders();
+    this.getOrders();
   }
 
-  GetOrders(): void {
-    this.ordersService.GetOrders().subscribe(orders => {
-      this.orders = orders;
-      console.log(orders);
-    });
+  getOrders(): void {
+    this.ordersService.getOrders().subscribe(orders => this.orders = orders);
   }
 
   goTo(id: number):void {
