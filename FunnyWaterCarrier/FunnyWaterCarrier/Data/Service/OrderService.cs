@@ -7,10 +7,10 @@ namespace FunnyWaterCarrier.Data.Service
 {
     public class OrderService : IOrder
     {
-        OrderStub _orderStub;
+        readonly OrderStub _orderStub;
         public OrderService()
         {
-            _orderStub = new OrderStub();
+            _orderStub = new();
         }
 
         public ActionResult AddOrder( Order order )

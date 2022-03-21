@@ -24,6 +24,13 @@ export class OrdersComponent implements OnInit {
   }
 
   GetOrders(): void {
-    this.ordersService.GetOrders().subscribe(orders => this.orders = orders);
+    this.ordersService.GetOrders().subscribe(orders => {
+      this.orders = orders;
+      console.log(orders);
+    });
+  }
+
+  goTo(id: number):void {
+    this.router.navigate(['order/' + id]);
   }
 }

@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int ExecutorId { get; set; }
+        public int EmployeeId { get; set; }
 
         private List<Tag> _tags;
 

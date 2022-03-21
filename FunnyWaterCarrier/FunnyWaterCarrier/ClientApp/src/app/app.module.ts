@@ -10,6 +10,9 @@ import { OrdersComponent } from './orders/order-list/order-list.component';
 import { OrderComponent } from './orders/order-view/order.component';
 import { CreateOrderComponent } from './orders/order-create/order-create.component';
 import { EditOrderComponent } from './orders/order-edit/order-edit.component';
+import { EmployesComponent } from './employes/employee-list/employee-list.component';
+import { EditEmployeeComponent } from './employes/employee-edit/employee-edit.component';
+import { EmployeeComponent } from './employes/employee-view/employee.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,12 @@ import { EditOrderComponent } from './orders/order-edit/order-edit.component';
       { path: 'order/:orderId/edit', component: EditOrderComponent },
       { path: 'orders', component: OrdersComponent },
 
-    /* 
-      { path: 'employee/create', component: RegistrationComponent, pathMatch: 'full' },
-      { path: 'employee/:employeeId', component: RegistrationComponent, pathMatch: 'full' },
-      { path: 'employee/:employeeId/edit', component: RegistrationComponent, pathMatch: 'full' },
-      { path: 'employes', component: RegistrationComponent, pathMatch: 'full' },
+      { path: 'employee/create', component: EditEmployeeComponent, pathMatch: 'full' },
+      { path: 'employee/:employeeId', component: EmployeeComponent, pathMatch: 'full' },
+      { path: 'employee/:employeeId/edit', component: EditEmployeeComponent, pathMatch: 'full' },
+      { path: 'employes', component: EmployesComponent, pathMatch: 'full' },
 
+    /* 
       { path: 'subdivisione/create', component: ScriptUserComponent, pathMatch: 'full' },
       { path: 'subdivisione/:subdivisioneId', component: ScriptUserComponent, pathMatch: 'full' },
       { path: 'subdivisione/:subdivisioneId/edit', component: ScriptUserComponent, pathMatch: 'full' },
