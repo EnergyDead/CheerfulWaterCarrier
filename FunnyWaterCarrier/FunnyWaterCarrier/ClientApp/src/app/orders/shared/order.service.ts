@@ -38,4 +38,9 @@ export class OrderService {
         // todo: проверить, может что-то ещё нужно
         return this.http.post<Order>(url, order);
     }
+
+    public deleteOrder(id: number): Observable<boolean> {
+        const url = `${this.baseUrl}api/order/${id}/delete`;
+        return this.http.post<boolean>(url, null, this.httpOptions);
+    }
  }

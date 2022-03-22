@@ -26,4 +26,9 @@ export class EmployesComponent implements OnInit {
   GetEmployes(): void {
     this.employeeService.GetEmployes().subscribe(employes => this.employes = employes);
   }
+
+  
+  goTo(id: number):void {
+    this.router.navigate(['employee/' + id]);
+  }
 }

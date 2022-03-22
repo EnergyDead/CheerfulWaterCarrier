@@ -13,6 +13,7 @@ import { EditOrderComponent } from './orders/order-edit/order-edit.component';
 import { EmployesComponent } from './employes/employee-list/employee-list.component';
 import { EditEmployeeComponent } from './employes/employee-edit/employee-edit.component';
 import { EmployeeComponent } from './employes/employee-view/employee.component';
+import { CreateEmployeeComponent } from './employes/employee-create/employee-create.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,11 @@ import { EmployeeComponent } from './employes/employee-view/employee.component';
     OrderComponent,
     OrdersComponent,
     EditOrderComponent,
-    CreateOrderComponent
+    CreateOrderComponent,
+    EmployeeComponent,
+    EmployesComponent,
+    EditEmployeeComponent,
+    CreateEmployeeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +39,7 @@ import { EmployeeComponent } from './employes/employee-view/employee.component';
       { path: 'order/:orderId/edit', component: EditOrderComponent },
       { path: 'orders', component: OrdersComponent },
 
-      { path: 'employee/create', component: EditEmployeeComponent, pathMatch: 'full' },
+      { path: 'employee/create', component: CreateEmployeeComponent, pathMatch: 'full' },
       { path: 'employee/:employeeId', component: EmployeeComponent, pathMatch: 'full' },
       { path: 'employee/:employeeId/edit', component: EditEmployeeComponent, pathMatch: 'full' },
       { path: 'employes', component: EmployesComponent, pathMatch: 'full' },

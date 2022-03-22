@@ -27,7 +27,7 @@ namespace FunnyWaterCarrier.Controllers
             return _employeeService.GetEmployee( id );
         }
 
-        [HttpPost( "employee/{id}/edit" )]
+        [HttpPost( "employee/{id}/edit" )]  
         public bool EditEmployee( Employee employee )
         {
             return _employeeService.EditEmployee( employee );

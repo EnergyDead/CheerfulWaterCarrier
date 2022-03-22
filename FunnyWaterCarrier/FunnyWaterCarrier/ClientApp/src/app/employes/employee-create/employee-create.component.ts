@@ -10,7 +10,7 @@ import { EmployeeService } from '../shared/employee.service';
 })
 
 /** order create component*/
-export class CreateOrderComponent implements OnInit {
+export class CreateEmployeeComponent implements OnInit {
 
   constructor(
     private router: Router,

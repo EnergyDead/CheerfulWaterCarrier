@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">FunnyWaterCarrier</a>
+      <a class="navbar-brand" [routerLink]="['/']">Веселый Водовоз</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -25,17 +25,13 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link text-dark" [routerLink]="['/']">Orders</a>
+            <a class="nav-link text-dark" [routerLink]="['/']">Заказы</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/employes']"
-              >Employes</a
-            >
+            <a class="nav-link text-dark" [routerLink]="['/employes']">Сотрудники</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Subdivisions</a
-            >
+            <a class="nav-link text-dark" [routerLink]="['/subdivisions']">Подразделения</a>
           </li>
         </ul>
       </div>

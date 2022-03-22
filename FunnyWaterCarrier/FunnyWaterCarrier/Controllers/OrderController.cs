@@ -41,9 +41,9 @@ namespace FunnyWaterCarrier.Controllers
         }
 
         [HttpPost( "order/{id}/delete" )]
-        public bool DeleteOrder( int orderId )
+        public bool DeleteOrder( int id )
         {
-            return _orderService.DeleteOrder( orderId );
+            return _orderService.DeleteOrder( id );
         }
     }
 }

@@ -34,8 +34,8 @@ export class CreateOrderComponent implements OnInit {
     newOrder = <Order>{};
     newOrder.id = 0;
     newOrder.name = create.value.name;
-    newOrder.executorId = this.selectedEmployee;
-    if (newOrder.name !== "" && newOrder.executorId !== undefined) {
+    newOrder.employeeId = this.selectedEmployee;
+    if (newOrder.name !== "" && newOrder.employeeId !== undefined) {
       this.orderService.addOrder(newOrder).subscribe( () => this.router.navigate(['orders/'] ));
     } else { this.isError = true}
   }
