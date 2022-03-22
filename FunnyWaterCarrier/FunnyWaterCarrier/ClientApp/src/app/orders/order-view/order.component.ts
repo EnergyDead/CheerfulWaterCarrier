@@ -37,7 +37,7 @@ export class OrderComponent implements OnInit {
   }
 
   getExecutor(id: number): void {
-    this.employeeService.GetEmployee(id).subscribe(employee => this.executor = employee );
+    this.employeeService.getEmployee(id).subscribe(employee => this.executor = employee );
   }
   
   goToExecutor(id: number):void {
@@ -49,6 +49,6 @@ export class OrderComponent implements OnInit {
   }
 
   delete(): void {
-    this.ordersService.deleteOrder(this.order.id).subscribe();
+    this.ordersService.deleteOrder(this.order.id).subscribe(_ => this.router.navigate([`orders`]));
   }
 }

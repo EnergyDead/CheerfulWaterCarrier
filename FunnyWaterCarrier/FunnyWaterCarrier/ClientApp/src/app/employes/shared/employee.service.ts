@@ -11,25 +11,31 @@ export class EmployeeService {
         this.baseUrl = baseUrl; 
     }
 
-    public GetEmployes(): Observable<Employee[]> {
+    public getEmployes(): Observable<Employee[]> {
         const url = `${this.baseUrl}api/employes`;
         return this.http.get<Employee[]>(url);
     }
 
-    public GetEmployee(id: number): Observable<Employee> {
+    public getEmployee(id: number): Observable<Employee> {
         const url = `${this.baseUrl}api/employee/${id}`;
         return this.http.get<Employee>(url);
     }
 
-    public AddEmployee(employee: Employee): Observable<Employee> {
+    public addEmployee(employee: Employee): Observable<Employee> {
         const url = `${this.baseUrl}api/employee/add`;
         // todo: проверить, может что-то ещё нужно
         return this.http.post<Employee>(url, employee);
     }
 
-    public EditEmployee(employee: Employee): Observable<Employee> {
+    public editEmployee(employee: Employee): Observable<Employee> {
         const url = `${this.baseUrl}api/employee/${employee.id}/edit`;
         // todo: проверить, может что-то ещё нужно
         return this.http.post<Employee>(url, employee);
+    }
+
+    public deleteEmployee(id: number): Observable<Employee> {
+        const url = `${this.baseUrl}api/employee/${id}/delete`;
+        // todo: проверить, может что-то ещё нужно
+        return this.http.post<Employee>(url, null);
     }
  }

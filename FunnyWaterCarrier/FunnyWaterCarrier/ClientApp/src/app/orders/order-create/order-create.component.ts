@@ -41,6 +41,6 @@ export class CreateOrderComponent implements OnInit {
   }
 
   getEmployes(): void {
-    this.employeeService.GetEmployes().subscribe(employes => this.employes = employes );
+    this.employeeService.getEmployes().subscribe(employes => this.employes = employes );
   }
 }

@@ -1,1 +1,13 @@
-<h1>employee</h1>
+<div class="employee">
+    <div>
+          <div class="employee-id">{{employee.id}}</div>
+          <div>Фамилия: {{employee.suname}}</div>
+          <div>Имя: {{employee.name}}</div>
+          <div>Отчество: {{employee.patronymic}}</div>
+          <div>Возраст: {{employee.bydthDay}}</div>
+          <div>Пол: {{employee.sex}}</div>
+          <div class="executor" (click)="goToSubdivision(employee.subdivisionId)">Подразделение: </div>
+    </div>
+    <button (click)="goToEdit(employee.id)">Редактировать</button>
+    <button (click)="delete()">Удалить</button>
+</div>  

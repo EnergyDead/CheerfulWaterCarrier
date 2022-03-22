@@ -11,9 +11,9 @@ namespace FunnyWaterCarrier.Data.Stub
         {
             _employes = new List<Employee>()
             {
-                new Employee() { Id = 0, Name = "Коля" },
-                new Employee() { Id = 1, Name = "Леха" },
-                new Employee() { Id = 2, Name = "Вася" }
+                new Employee() { Id = 0, Name = "Коля", Birthday = new DateTime(1999, 7, 12), Sex = Sex.male, SubdivisionId = 0, Surname = "Иванов"  },
+                new Employee() { Id = 1, Name = "Леха", Birthday = new DateTime(1999, 7, 12), Sex = Sex.male, SubdivisionId = 0, Surname = "Лежаков" },
+                new Employee() { Id = 2, Name = "Вася", Birthday = new DateTime(1999, 7, 12), Sex = Sex.male, SubdivisionId = 0, Surname = "Пиколов" }
             };
         }
     }
