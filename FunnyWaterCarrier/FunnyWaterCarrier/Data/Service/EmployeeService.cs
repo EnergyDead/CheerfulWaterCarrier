@@ -8,8 +8,11 @@ namespace FunnyWaterCarrier.Data.Service
     public class EmployeeService : IEmployee
     {
         private readonly EmployeeStub _employes;
-        public EmployeeService()
+        readonly string _connectionString;
+
+        public EmployeeService( string connection )
         {
+            _connectionString = connection;
             _employes = new();
         }
 

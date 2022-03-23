@@ -7,9 +7,11 @@ namespace FunnyWaterCarrier.Data.Service
     public class SubdivisionService : ISubdivision
     {
         readonly SubdivisionStub _subdivisionStub;
-        public SubdivisionService()
+        readonly string _connectionString;
+        public SubdivisionService(string connectionString )
         {
             _subdivisionStub = new();
+            _connectionString = connectionString;
         }
 
         public bool AddSubdivision( Model.Subdivision subdivision )

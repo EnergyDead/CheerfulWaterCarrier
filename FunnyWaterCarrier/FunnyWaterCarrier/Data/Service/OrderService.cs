@@ -8,9 +8,11 @@ namespace FunnyWaterCarrier.Data.Service
     public class OrderService : IOrder
     {
         readonly OrderStub _orderStub;
-        public OrderService()
+        readonly string _connectionString;
+        public OrderService(string connectionString )
         {
             _orderStub = new();
+            _connectionString = connectionString;
         }
 
         public bool AddOrder( Order order )

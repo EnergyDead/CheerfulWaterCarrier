@@ -1,15 +1,20 @@
+using EntityFramework;
 using FunnyWaterCarrier.Data.Interface;
 using FunnyWaterCarrier.Data.Service;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder( args );
 
 // Add services to the container.
 
+ConfigSettings configSettings = new ConfigSettings();
+DbContextConfiguration dbContextConfiguration = configSettings.DbContextConfiguration;
 
+builder.Services.AddDbContext<ApplicationContext>( options => options.UseSqlServer( dbContextConfiguration.ConnectionString ) );
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IEmployee, EmployeeService>();
-builder.Services.AddScoped<IOrder, OrderService>();
-builder.Services.AddScoped<ISubdivision, SubdivisionService>();
+builder.Services.AddScoped<IEmployee, EmployeeService>( provider => new EmployeeService( dbContextConfiguration.ConnectionString ) );
+builder.Services.AddScoped<IOrder, OrderService>( provider => new OrderService( dbContextConfiguration.ConnectionString ) );
+builder.Services.AddScoped<ISubdivision, SubdivisionService>( provider => new SubdivisionService( dbContextConfiguration.ConnectionString ) );
 builder.Services.AddScoped<ITag, TagService>();
 
 var app = builder.Build();

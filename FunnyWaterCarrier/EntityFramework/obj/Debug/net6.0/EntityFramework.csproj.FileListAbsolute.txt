@@ -1,0 +1,14 @@
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\bin\Debug\net6.0\EntityFramework.deps.json
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\bin\Debug\net6.0\EntityFramework.runtimeconfig.json
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\bin\Debug\net6.0\EntityFramework.dll
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\bin\Debug\net6.0\EntityFramework.pdb
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.csproj.AssemblyReference.cache
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.GeneratedMSBuildEditorConfig.editorconfig
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.AssemblyInfoInputs.cache
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.AssemblyInfo.cs
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.csproj.CoreCompileInputs.cache
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.dll
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\refint\EntityFramework.dll
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.pdb
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\EntityFramework.genruntimeconfig.cache
+C:\job\Веселый Водовоз\FunnyWaterCarrier\EntityFramework\obj\Debug\net6.0\ref\EntityFramework.dll
