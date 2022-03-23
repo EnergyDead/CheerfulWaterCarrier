@@ -14,12 +14,12 @@
       </div>
       <div>
         <label for="select">Пол</label>
-        <select [(ngModel)]="selectedSubdivision" name="subdivision" class="add-subdivision">
-          <option *ngFor="let subdivision of subdivisions" [ngValue]="subdivision.id">{{subdivision.name}}</option>
+        <select [(ngModel)]="selectedSex" name="subdivision" class="add-subdivision">
+          <option *ngFor="let sex of sexTypes" [ngValue]="sex">{{sex}}</option>
         </select>
       </div>
       <div>
-        <label for="select">Исполнитель</label>
+        <label for="select">Подразделение</label>
         <select [(ngModel)]="selectedSubdivision" name="subdivision" class="add-subdivision">
           <option *ngFor="let subdivision of subdivisions" [ngValue]="subdivision.id">{{subdivision.name}}</option>
         </select>
@@ -28,7 +28,7 @@
     <div class="d-flex flex-column main">
       <span *ngIf="isError" class="erorr">Ошибка! Не все поля заполнены..</span>
       <div class="d-flex flex-row-reverse">
-        <button (click)="createEmployee(employee)" type="button" class="btn btn-create">Создать</button>
+        <button (click)="createEmployee(employee)" type="button" class="button">Создать</button>
       </div>
     </div>
   </form>

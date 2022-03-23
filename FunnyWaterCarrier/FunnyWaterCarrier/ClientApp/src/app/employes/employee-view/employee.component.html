@@ -8,6 +8,6 @@
           <div>Пол: {{employee.sex}}</div>
           <div class="executor" (click)="goToSubdivision(employee.subdivisionId)">Подразделение: {{subdivision.name}}</div>
     </div>
-    <button (click)="goToEdit(employee.id)">Редактировать</button>
-    <button (click)="delete()">Удалить</button>
+    <button (click)="goToEdit(employee.id)" class="button">Редактировать</button>
+    <button (click)="delete()" class="button delete-button">Удалить</button>
 </div>

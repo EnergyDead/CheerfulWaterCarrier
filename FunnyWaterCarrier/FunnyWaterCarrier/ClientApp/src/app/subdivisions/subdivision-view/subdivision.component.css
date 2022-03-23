@@ -1,3 +1,7 @@
 .executor {
     cursor: pointer; 
 }
+
+.delete-button {
+    margin-left: 10px;
+}

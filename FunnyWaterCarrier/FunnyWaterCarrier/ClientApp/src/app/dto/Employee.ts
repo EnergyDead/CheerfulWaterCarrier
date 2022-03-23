@@ -9,7 +9,7 @@ export interface Employee {
     sex: Sex
 }
 
-enum Sex {
+export enum Sex {
     mail,
     femail
 }

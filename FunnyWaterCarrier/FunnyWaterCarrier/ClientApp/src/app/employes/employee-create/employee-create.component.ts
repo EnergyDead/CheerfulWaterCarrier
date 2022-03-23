@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Employee } from 'src/app/dto/Employee';
+import { Employee, Sex } from 'src/app/dto/Employee';
 import { Subdivision } from 'src/app/dto/Subdivision';
+import { SubdivisionService } from 'src/app/subdivisions/shared/subdivision.service';
 import { EmployeeService } from '../shared/employee.service';
 
 
@@ -15,16 +16,23 @@ import { EmployeeService } from '../shared/employee.service';
 /** order create component*/
 export class CreateEmployeeComponent implements OnInit {
   selectedSubdivision: number = 0;
+  selectedSex: Sex = Sex.femail;
   subdivisions: Subdivision[] = [];
   isError: boolean = false;
+  sexTypes = Object.values(Sex).filter(value => typeof value != 'number');
 
   constructor(
     private router: Router,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private subdivisionService: SubdivisionService
   ) { }
 
   ngOnInit() {
+    this.getSubdivisions();
+  }
 
+  getSubdivisions(): void {
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions);
   }
 
   createEmployee(employee: NgForm): void {
