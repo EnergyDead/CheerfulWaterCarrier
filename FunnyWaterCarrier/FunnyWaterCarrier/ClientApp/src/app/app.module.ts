@@ -14,6 +14,10 @@ import { EmployesComponent } from './employes/employee-list/employee-list.compon
 import { EditEmployeeComponent } from './employes/employee-edit/employee-edit.component';
 import { EmployeeComponent } from './employes/employee-view/employee.component';
 import { CreateEmployeeComponent } from './employes/employee-create/employee-create.component';
+import { SubdivisionsComponent } from './subdivisions/subdivision-list/subdivision-list.component';
+import { SubdivisionComponent } from './subdivisions/subdivision-view/subdivision.component';
+import { EditSubdivisionComponent } from './subdivisions/subdivision-edit/subdivision-edit.component';
+import { CreateSubdivisionComponent } from './subdivisions/subdivision-create/subdivision-create.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { CreateEmployeeComponent } from './employes/employee-create/employee-cre
     EmployeeComponent,
     EmployesComponent,
     EditEmployeeComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    SubdivisionsComponent,
+    EditSubdivisionComponent,
+    SubdivisionComponent,
+    CreateSubdivisionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,12 +52,10 @@ import { CreateEmployeeComponent } from './employes/employee-create/employee-cre
       { path: 'employee/:employeeId/edit', component: EditEmployeeComponent, pathMatch: 'full' },
       { path: 'employes', component: EmployesComponent, pathMatch: 'full' },
 
-    /* 
-      { path: 'subdivisione/create', component: ScriptUserComponent, pathMatch: 'full' },
-      { path: 'subdivisione/:subdivisioneId', component: ScriptUserComponent, pathMatch: 'full' },
-      { path: 'subdivisione/:subdivisioneId/edit', component: ScriptUserComponent, pathMatch: 'full' },
+      { path: 'subdivision/create', component: CreateSubdivisionComponent, pathMatch: 'full' },
+      { path: 'subdivision/:subdivisioneId', component: SubdivisionComponent, pathMatch: 'full' },
+      { path: 'subdivision/:subdivisioneId/edit', component: EditSubdivisionComponent, pathMatch: 'full' },
       { path: 'subdivisions', component: SubdivisionsComponent, pathMatch: 'full' } 
-    */
     ])
   ],
   providers: [],

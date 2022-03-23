@@ -1,0 +1,9 @@
+<div class="list-subdivision">
+  <div *ngFor="let subdivision of subdivisions"  class="subdivision-blick link d-flex">
+      <div (click)="goTo(subdivision.id)" class="subdivision">
+        <div class="subdivision-id">{{subdivision.id}}</div>
+        {{subdivision.name.substring(0, 80)}}          
+      </div>
+  </div>
+  <button [routerLink]="['/subdivision/create']">Добавить</button>
+</div>

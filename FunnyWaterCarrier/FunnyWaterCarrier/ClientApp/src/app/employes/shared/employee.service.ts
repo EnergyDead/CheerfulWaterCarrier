@@ -7,6 +7,10 @@ import { Employee } from 'src/app/dto/Employee';
 export class EmployeeService {    
     private baseUrl: string;
 
+    httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.baseUrl = baseUrl; 
     }
@@ -30,7 +34,7 @@ export class EmployeeService {
     public editEmployee(employee: Employee): Observable<Employee> {
         const url = `${this.baseUrl}api/employee/${employee.id}/edit`;
         // todo: проверить, может что-то ещё нужно
-        return this.http.post<Employee>(url, employee);
+        return this.http.post<Employee>(url, employee, this.httpOptions);
     }
 
     public deleteEmployee(id: number): Observable<Employee> {

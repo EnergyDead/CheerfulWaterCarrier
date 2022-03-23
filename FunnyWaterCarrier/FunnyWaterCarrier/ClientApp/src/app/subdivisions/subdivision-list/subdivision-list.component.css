@@ -1,0 +1,27 @@
+.subdivision-blick {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin: 10px 20px;
+    max-width: 750px;
+    cursor: pointer;
+  }
+  
+.subdivision {
+    margin: 5px 20px 10px 0;
+    padding-left: 30px;
+    width: 100%;
+    color: #000;
+    text-decoration: none;
+}
+
+.subdivision-id {
+    margin-left: -10px;
+    font-size: 11px;
+}
+
+.list-subdivision {
+    overflow: auto;
+    width: 100%;
+    max-height: 90vh;
+    padding: 0px;
+}
+  

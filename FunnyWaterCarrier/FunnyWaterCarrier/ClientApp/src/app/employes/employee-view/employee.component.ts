@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/dto/Employee';
+import { Subdivision } from 'src/app/dto/Subdivision';
+import { SubdivisionService } from 'src/app/subdivisions/shared/subdivision.service';
 import { EmployeeService } from '../shared/employee.service';
 
 
@@ -13,10 +15,12 @@ import { EmployeeService } from '../shared/employee.service';
 /** orders component*/
 export class EmployeeComponent implements OnInit {
   employee: Employee = {} as Employee;
+  subdivision: Subdivision = {} as Subdivision;
 
   constructor(
     private router: Router,
     private employeeService: EmployeeService,
+    private subdivisionService: SubdivisionService,
     private route: ActivatedRoute
   ) { }
 
@@ -27,7 +31,14 @@ export class EmployeeComponent implements OnInit {
 
   getEmployee(): void {
     const orderId = +this.route.snapshot.paramMap.get('employeeId')!;
-    this.employeeService.getEmployee(orderId).subscribe(employee => this.employee = employee);
+    this.employeeService.getEmployee(orderId).subscribe(employee => {
+      this.employee = employee,
+      this.getSubdivision(employee.subdivisionId);
+    });
+  }
+
+  getSubdivision(id: number):void {
+    this.subdivisionService.getSubdivision(id).subscribe(subdivision => this.subdivision = subdivision);
   }
 
   goToEdit(id: number):void {

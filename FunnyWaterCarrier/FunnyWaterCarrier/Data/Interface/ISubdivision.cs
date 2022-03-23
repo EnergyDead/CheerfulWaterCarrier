@@ -7,8 +7,8 @@ namespace FunnyWaterCarrier.Data.Interface
     {
         public ActionResult<Subdivision> GetSubdivision( int id );
         public ActionResult<List<Subdivision>> GetSubdivisions();
-        public ActionResult AddSubdivision( Subdivision subdivision );
-        public ActionResult EditSubdivision( Subdivision subdivision );
-        public ActionResult DeleteSubdivision( int id );
+        public bool AddSubdivision( Subdivision subdivision );
+        public bool EditSubdivision( Subdivision subdivision );
+        public bool DeleteSubdivision( int id );
     }
 }
