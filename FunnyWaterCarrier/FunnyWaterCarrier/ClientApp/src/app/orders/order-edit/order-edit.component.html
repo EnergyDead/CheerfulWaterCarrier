@@ -7,7 +7,7 @@
       <div>
         <label for="select">Исполнитель</label>
         <select [(ngModel)]="order.employeeId" name="employee" class="add-employee">
-          <option *ngFor="let employee of employes" [ngValue]="employee.id">{{employee.name}}</option>
+          <option *ngFor="let employee of employes" [ngValue]="employee.employeeId">{{employee.name}}</option>
         </select>
       </div>
     </div>

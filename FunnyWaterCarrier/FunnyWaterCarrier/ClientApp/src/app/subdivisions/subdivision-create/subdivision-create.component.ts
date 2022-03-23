@@ -34,7 +34,7 @@ export class CreateSubdivisionComponent implements OnInit {
 
   addSubdivision(create: NgForm) {
     let newSubdivision = <Subdivision>{};
-    newSubdivision.id = 0;
+    newSubdivision.subdivisionId = 0;
     newSubdivision.name = create.value.name;
     newSubdivision.supervisorId = this.selectedEmployee;
     if (newSubdivision.name !== "" && newSubdivision.supervisorId !== undefined) {

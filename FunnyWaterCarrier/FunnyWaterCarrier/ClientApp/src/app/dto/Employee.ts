@@ -1,6 +1,6 @@
 
 export interface Employee {
-    id: number,
+    employeeId: number,
     name: string,
     surname: string,
     bydthDay: Date,

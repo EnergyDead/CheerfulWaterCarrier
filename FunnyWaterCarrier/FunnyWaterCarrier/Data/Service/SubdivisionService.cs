@@ -16,8 +16,8 @@ namespace FunnyWaterCarrier.Data.Service
 
         public bool AddSubdivision( Model.Subdivision subdivision )
         {
-            int index = _subdivisionStub.Subdivisions.Select( subdivision => subdivision.Id ).Max();
-            subdivision.Id = index + 1;
+            int index = _subdivisionStub.Subdivisions.Select( subdivision => subdivision.SubdivisionId ).Max();
+            subdivision.SubdivisionId = index + 1;
             _subdivisionStub.Subdivisions.Add( subdivision );
 
             return true;
@@ -25,7 +25,7 @@ namespace FunnyWaterCarrier.Data.Service
 
         public bool DeleteSubdivision( int id )
         {
-            var subdivision = _subdivisionStub.Subdivisions.FirstOrDefault( subdivision => subdivision.Id == id );
+            var subdivision = _subdivisionStub.Subdivisions.FirstOrDefault( subdivision => subdivision.SubdivisionId == id );
             _subdivisionStub.Subdivisions.Remove( subdivision );
 
             return true;
@@ -38,7 +38,7 @@ namespace FunnyWaterCarrier.Data.Service
 
         public ActionResult<Model.Subdivision> GetSubdivision( int id )
         {
-            return _subdivisionStub.Subdivisions.First( ordr => ordr.Id == id );
+            return _subdivisionStub.Subdivisions.First( ordr => ordr.SubdivisionId == id );
         }
 
         public ActionResult<List<Model.Subdivision>> GetSubdivisions()

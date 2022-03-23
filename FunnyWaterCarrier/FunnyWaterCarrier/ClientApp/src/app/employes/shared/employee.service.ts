@@ -32,7 +32,7 @@ export class EmployeeService {
     }
 
     public editEmployee(employee: Employee): Observable<Employee> {
-        const url = `${this.baseUrl}api/employee/${employee.id}/edit`;
+        const url = `${this.baseUrl}api/employee/${employee.employeeId}/edit`;
         // todo: проверить, может что-то ещё нужно
         return this.http.post<Employee>(url, employee, this.httpOptions);
     }

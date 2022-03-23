@@ -46,7 +46,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   delete(): void {
-    this.employeeService.deleteEmployee(this.employee.id).subscribe( _ => this.router.navigate([`employes`]) );
+    this.employeeService.deleteEmployee(this.employee.employeeId).subscribe( _ => this.router.navigate([`employes`]) );
   }
 
   goToSubdivision(id: number): void {

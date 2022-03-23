@@ -17,8 +17,8 @@ namespace FunnyWaterCarrier.Data.Service
 
         public bool AddOrder( Order order )
         {
-            int index = _orderStub.Orders.Select( order => order.Id ).Max();
-            order.Id = index + 1;
+            int index = _orderStub.Orders.Select( order => order.OrderId ).Max();
+            order.OrderId = index + 1;
             _orderStub.Orders.Add( order );
 
             return true;
@@ -26,7 +26,7 @@ namespace FunnyWaterCarrier.Data.Service
 
         public bool DeleteOrder( int orderId )
         {
-            var order = _orderStub.Orders.FirstOrDefault( order => order.Id == orderId );
+            var order = _orderStub.Orders.FirstOrDefault( order => order.OrderId == orderId );
             _orderStub.Orders.Remove( order );
 
             return true;
@@ -34,14 +34,14 @@ namespace FunnyWaterCarrier.Data.Service
 
         public bool EditOrder( Order newOrder )
         {
-            _orderStub.Orders.Where( order => order.Id == newOrder.Id ).Select( order => order = newOrder );
+            _orderStub.Orders.Where( order => order.OrderId == newOrder.OrderId ).Select( order => order = newOrder );
 
             return true;
         }
 
         public Order GetOrder( int orderId )
         {
-            return _orderStub.Orders.First( ordr => ordr.Id == orderId );
+            return _orderStub.Orders.First( ordr => ordr.OrderId == orderId );
         }
 
         public List<Order> GetOrders()

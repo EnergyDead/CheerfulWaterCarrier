@@ -32,7 +32,7 @@ export class CreateOrderComponent implements OnInit {
 
   addOrder(newOrder: Order, create: NgForm) {
     newOrder = <Order>{};
-    newOrder.id = 0;
+    newOrder.orderId = 0;
     newOrder.name = create.value.name;
     newOrder.employeeId = this.selectedEmployee;
     if (newOrder.name !== "" && newOrder.employeeId !== undefined) {

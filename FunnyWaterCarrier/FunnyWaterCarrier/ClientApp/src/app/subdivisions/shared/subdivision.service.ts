@@ -33,7 +33,7 @@ export class SubdivisionService {
     }
 
     public editSubdivision(subdivision: Subdivision): Observable<Subdivision> {
-        const url = `${this.baseUrl}api/subdivision/${subdivision.id}/edit`;
+        const url = `${this.baseUrl}api/subdivision/${subdivision.subdivisionId}/edit`;
         // todo: проверить, может что-то ещё нужно
         return this.http.post<Subdivision>(url, subdivision);
     }

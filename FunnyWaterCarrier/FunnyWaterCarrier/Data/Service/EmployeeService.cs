@@ -1,50 +1,71 @@
-﻿using FunnyWaterCarrier.Data.Interface;
+﻿using EntityFramework;
+using FunnyWaterCarrier.Data.Interface;
 using FunnyWaterCarrier.Data.Model;
 using FunnyWaterCarrier.Data.Stub;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FunnyWaterCarrier.Data.Service
 {
     public class EmployeeService : IEmployee
     {
-        private readonly EmployeeStub _employes;
         readonly string _connectionString;
 
-        public EmployeeService( string connection )
+        public EmployeeService( string connectionString )
         {
-            _connectionString = connection;
-            _employes = new();
+            _connectionString = connectionString;
         }
 
         public bool AddEmployee( Employee employee )
         {
-            _employes.Employee.Add( employee );
+            using ( ApplicationContext db = new ApplicationContext() )
+            {
+                db.Employee.Add( employee );
+                db.SaveChanges();
+            }
+
             return true;
         }
 
         public bool DeleteEmployee( int id )
         {
-
-            var employee = _employes.Employee.FirstOrDefault( employee => employee.Id == id );
-            _employes.Employee.Remove( employee );
+            using ( ApplicationContext db = new ApplicationContext() )
+            {
+                var employee = db.Employee.FirstOrDefault( employee => employee.EmployeeId == id );
+                db.Employee.Remove( employee );
+                db.SaveChanges();
+            }
             return true;
         }
 
         public bool EditEmployee( Employee newEmployee )
         {
-            _employes.Employee.Where( employee => employee.Id == newEmployee.Id ).Select( employee => employee = newEmployee );
-
+        using ( ApplicationContext db = new ApplicationContext() )
+        {
+            db.Employee.Update( newEmployee );
+            db.SaveChanges();
+        }
             return true;
         }
 
         public ActionResult<List<Employee>> GetEmployes()
         {
-            return _employes.Employee;
+            List<Employee> employes;
+            using ( ApplicationContext db = new ApplicationContext() )
+            {
+                employes = db.Employee.ToList();
+            }
+            return employes;
         }
 
         public ActionResult<Employee> GetEmployee( int id )
         {
-            return _employes.Employee.FirstOrDefault( employee => employee.Id == id );
+            Employee employee;
+            using ( ApplicationContext db = new ApplicationContext() )
+            {
+                employee = db.Employee.FirstOrDefault( employee => employee.EmployeeId == id );
+            }
+            return employee ?? ( new() );
         }
     }
 }

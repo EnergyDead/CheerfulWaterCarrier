@@ -1,5 +1,5 @@
 export interface Subdivision {
-    id: number,
+    subdivisionId: number,
     name: string,
     supervisorId: number
 }

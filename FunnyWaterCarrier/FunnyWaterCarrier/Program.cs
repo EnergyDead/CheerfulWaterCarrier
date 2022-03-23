@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder( args );
 ConfigSettings configSettings = new ConfigSettings();
 DbContextConfiguration dbContextConfiguration = configSettings.DbContextConfiguration;
 
-builder.Services.AddDbContext<ApplicationContext>( options => options.UseSqlServer( dbContextConfiguration.ConnectionString ) );
+builder.Services.AddDbContext<ApplicationContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IEmployee, EmployeeService>( provider => new EmployeeService( dbContextConfiguration.ConnectionString ) );
 builder.Services.AddScoped<IOrder, OrderService>( provider => new OrderService( dbContextConfiguration.ConnectionString ) );

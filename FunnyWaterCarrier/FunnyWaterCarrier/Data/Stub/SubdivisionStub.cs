@@ -11,8 +11,8 @@ namespace FunnyWaterCarrier.Data.Stub
         {
             _subdivisions = new List<Subdivision>()
             {
-                new Subdivision() { Id = 0, Name = "Отдел смешарики", SupervisorId = 1 },
-                new Subdivision() { Id = 1, Name = "Отдел трудяги", SupervisorId = 0 }
+                new Subdivision() { SubdivisionId = 0, Name = "Отдел смешарики", SupervisorId = 1 },
+                new Subdivision() { SubdivisionId = 1, Name = "Отдел трудяги", SupervisorId = 0 }
             };
         }
     }

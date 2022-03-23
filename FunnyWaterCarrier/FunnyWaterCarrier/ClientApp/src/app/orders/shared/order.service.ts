@@ -34,7 +34,7 @@ export class OrderService {
     }
 
     public editOrder(order: Order): Observable<Order> {
-        const url = `${this.baseUrl}api/order/${order.id}/edit`;
+        const url = `${this.baseUrl}api/order/${order.orderId}/edit`;
         // todo: проверить, может что-то ещё нужно
         return this.http.post<Order>(url, order);
     }

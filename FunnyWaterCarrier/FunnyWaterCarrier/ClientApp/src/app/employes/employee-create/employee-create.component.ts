@@ -37,12 +37,13 @@ export class CreateEmployeeComponent implements OnInit {
 
   createEmployee(employee: NgForm): void {
     let newEmployee = <Employee>{};
-    newEmployee.id = 0;
+    newEmployee.employeeId = 0;
     newEmployee.name = employee.value.name;
     newEmployee.surname = employee.value.surname;    
     newEmployee.bydthDay = employee.value.bydthDay;
 
     newEmployee.subdivisionId = this.selectedSubdivision;
+    console.log(newEmployee);
     if (newEmployee.name !== "" && newEmployee.subdivisionId !== undefined) {
       this.employeeService.addEmployee(newEmployee).subscribe( () => this.router.navigate(['employes/'] ));
     } else { this.isError = true}

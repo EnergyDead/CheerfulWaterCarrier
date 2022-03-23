@@ -49,6 +49,6 @@ export class SubdivisionComponent implements OnInit {
   }
 
   delete(): void {
-    this.subdivisionService.deleteSubdivision(this.subdivision.id).subscribe(_ => this.router.navigate([`subdivisions`]));
+    this.subdivisionService.deleteSubdivision(this.subdivision.subdivisionId).subscribe(_ => this.router.navigate([`subdivisions`]));
   }
 }

@@ -1,7 +1,7 @@
 <div class="list-employee">
     <div *ngFor="let employee of employes"  class="employee-blick link d-flex">
-        <div (click)="goTo(employee.id)" class="employee">
-          <div class="employee-id">{{employee.id}}</div>
+        <div (click)="goTo(employee.employeeId)" class="employee">
+          <div class="employee-id">{{employee.employeeId}}</div>
           {{employee.name.substring(0, 80)}}          
         </div>
     </div>

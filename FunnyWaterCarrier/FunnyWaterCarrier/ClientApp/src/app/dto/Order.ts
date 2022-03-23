@@ -1,7 +1,7 @@
 import { Tag } from "./Tag";
 
 export interface Order {
-    id: number,
+    orderId: number,
     name: string,
     employeeId: number,
     tags: Tag[]

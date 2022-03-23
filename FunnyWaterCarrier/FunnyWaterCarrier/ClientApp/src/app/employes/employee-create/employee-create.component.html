@@ -21,7 +21,7 @@
       <div>
         <label for="select">Подразделение</label>
         <select [(ngModel)]="selectedSubdivision" name="subdivision" class="add-subdivision">
-          <option *ngFor="let subdivision of subdivisions" [ngValue]="subdivision.id">{{subdivision.name}}</option>
+          <option *ngFor="let subdivision of subdivisions" [ngValue]="subdivision.subdivisionId">{{subdivision.name}}</option>
         </select>
       </div>
     </div>

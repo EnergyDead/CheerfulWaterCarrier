@@ -49,6 +49,6 @@ export class OrderComponent implements OnInit {
   }
 
   delete(): void {
-    this.ordersService.deleteOrder(this.order.id).subscribe(_ => this.router.navigate([`orders`]));
+    this.ordersService.deleteOrder(this.order.orderId).subscribe(_ => this.router.navigate([`orders`]));
   }
 }

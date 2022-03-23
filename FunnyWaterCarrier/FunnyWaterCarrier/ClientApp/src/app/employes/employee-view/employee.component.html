@@ -1,6 +1,6 @@
 <div class="employee">
     <div>
-          <div class="employee-id">{{employee.id}}</div>
+          <div class="employee-id">{{employee.employeeId}}</div>
           <div>Фамилия: {{employee.surname}}</div>
           <div>Имя: {{employee.name}}</div>
           <div>Отчество: {{employee.patronymic}}</div>
@@ -8,6 +8,6 @@
           <div>Пол: {{employee.sex}}</div>
           <div class="executor" (click)="goToSubdivision(employee.subdivisionId)">Подразделение: {{subdivision.name}}</div>
     </div>
-    <button (click)="goToEdit(employee.id)" class="button">Редактировать</button>
+    <button (click)="goToEdit(employee.employeeId)" class="button">Редактировать</button>
     <button (click)="delete()" class="button delete-button">Удалить</button>
 </div>
