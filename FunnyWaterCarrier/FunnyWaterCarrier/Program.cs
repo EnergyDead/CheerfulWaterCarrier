@@ -1,7 +1,6 @@
 using EntityFramework;
 using FunnyWaterCarrier.Data.Interface;
 using FunnyWaterCarrier.Data.Service;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder( args );
 
@@ -12,7 +11,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IEmployee, EmployeeService>();
 builder.Services.AddScoped<IOrder, OrderService>();
 builder.Services.AddScoped<ISubdivision, SubdivisionService>();
-builder.Services.AddScoped<ITag, TagService>();
 
 var app = builder.Build();
 

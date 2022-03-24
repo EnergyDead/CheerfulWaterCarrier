@@ -6,7 +6,7 @@ namespace EntityFramework
     {
         private readonly IConfiguration _serviceConfiguration;
 
-        #region Congigs
+        #region Configs
 
         public DbContextConfiguration DbContextConfiguration => _serviceConfiguration.GetSection( "DbConnection" ).Get<DbContextConfiguration>();
 
@@ -20,12 +20,12 @@ namespace EntityFramework
         private IConfiguration GetServiceConfiguration()
         {
             string env = "dev"; // Environment.GetEnvironmentVariable ("ASPNETCORE_RUNTIME_ENVIRONMENT");
-            IConfigurationBuilder configurationBuilder = new ConfigurationBuilder().AddJsonFile( "appsettings.json", false ); // Базовая конфигурация
+            IConfigurationBuilder configurationBuilder = new ConfigurationBuilder().AddJsonFile( "appsettings.json", false );
 
             string additioonalCofigFile = $"appsettings.{env}.json";
             if ( File.Exists( additioonalCofigFile ) )
             {
-                configurationBuilder.AddJsonFile( additioonalCofigFile, false ); // Переопределения для окружения
+                configurationBuilder.AddJsonFile( additioonalCofigFile, false );
             }
 
             return configurationBuilder.Build();

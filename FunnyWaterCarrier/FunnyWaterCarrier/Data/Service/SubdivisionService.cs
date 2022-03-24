@@ -1,7 +1,6 @@
 ﻿using EntityFramework;
 using FunnyWaterCarrier.Data.Interface;
 using FunnyWaterCarrier.Data.Model;
-using Microsoft.AspNetCore.Mvc;
 
 namespace FunnyWaterCarrier.Data.Service
 {

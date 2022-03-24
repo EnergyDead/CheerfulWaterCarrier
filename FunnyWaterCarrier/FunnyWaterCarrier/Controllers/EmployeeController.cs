@@ -11,7 +11,7 @@ namespace FunnyWaterCarrier.Controllers
     {
         private readonly IEmployee _employeeService;
 
-        public EmployeeController( ILogger<EmployeeController> logger, IEmployee employeeService )
+        public EmployeeController( IEmployee employeeService )
         {
             _employeeService = employeeService;
         }

@@ -10,7 +10,6 @@ namespace EntityFramework
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Subdivision> Subdivision { get; set; }
         public DbSet<Order> Order { get; set; }
-        public string DbPath { get; }
 
         public ApplicationContext()
         {
@@ -19,7 +18,7 @@ namespace EntityFramework
 
         protected override void OnConfiguring( DbContextOptionsBuilder options )
         {
-            ConfigSettings configSettings = new ConfigSettings();
+            ConfigSettings configSettings = new();
             DbContextConfiguration dbContextConfiguration = configSettings.DbContextConfiguration;
             options.UseSqlServer( dbContextConfiguration.ConnectionString );
         }

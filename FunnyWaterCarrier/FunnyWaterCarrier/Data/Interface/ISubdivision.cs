@@ -1,5 +1,4 @@
 ﻿using FunnyWaterCarrier.Data.Model;
-using Microsoft.AspNetCore.Mvc;
 
 namespace FunnyWaterCarrier.Data.Interface
 {
