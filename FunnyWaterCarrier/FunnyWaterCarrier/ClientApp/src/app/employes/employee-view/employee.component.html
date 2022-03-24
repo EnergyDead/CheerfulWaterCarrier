@@ -1,12 +1,11 @@
 <div class="employee">
     <div>
-          <div class="employee-id">{{employee.employeeId}}</div>
-          <div>Фамилия: {{employee.surname}}</div>
-          <div>Имя: {{employee.name}}</div>
-          <div>Отчество: {{employee.patronymic}}</div>
-          <div>Дата рождения: {{employee.dateofBirth | date:'mediumDate'}}</div>
-          <div>Пол: {{sex}}</div>
-          <div class="executor" (click)="goToSubdivision(employee.subdivisionId)">Подразделение: {{subdivision.name}}</div>
+        <div [hidden]="!employee.surname" class="view-surname">Фамилия: {{employee.surname}}</div>
+        <div class="view-name">Имя: {{employee.name}}</div>
+        <div [hidden]="!employee.patronymic" class="view-patronymic">Отчество: {{employee.patronymic}}</div>
+        <div class="view-dateofBirth">Дата рождения: {{employee.dateofBirth | date:'mediumDate'}}</div>
+        <div class="view-sex">Пол: {{sex}}</div>
+        <div [hidden]="!subdivision" class="view-subdivision" (click)="goToSubdivision(employee.subdivisionId)">Подразделение: {{subdivision.name}}</div>
     </div>
     <button (click)="goToEdit(employee.employeeId)" class="button">Редактировать</button>
     <button (click)="delete()" class="button delete-button">Удалить</button>

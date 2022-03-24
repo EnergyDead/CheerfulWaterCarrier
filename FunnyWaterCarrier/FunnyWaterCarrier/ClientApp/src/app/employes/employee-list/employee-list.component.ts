@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Employee } from 'src/app/dto/Employee';
 import { EmployeeService } from '../shared/employee.service';
 
@@ -24,10 +25,9 @@ export class EmployesComponent implements OnInit {
   }
 
   GetEmployes(): void {
-    this.employeeService.getEmployes().subscribe(employes => this.employes = employes);
+    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => console.log(error));
   }
 
-  
   goTo(id: number):void {
     this.router.navigate(['employee/' + id]);
   }

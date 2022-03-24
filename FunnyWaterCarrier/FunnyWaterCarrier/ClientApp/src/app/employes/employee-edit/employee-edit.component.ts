@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Employee } from 'src/app/dto/Employee';
 import { Subdivision } from 'src/app/dto/Subdivision';
 import { SubdivisionService } from 'src/app/subdivisions/shared/subdivision.service';
@@ -33,19 +34,24 @@ export class EditEmployeeComponent implements OnInit {
 
   getEmployee(): void {
     const employeeId = +this.route.snapshot.paramMap.get('employeeId')!;
-    this.employeeService.getEmployee(employeeId).subscribe(employee => this.employee = employee);
+    this.employeeService.getEmployee(employeeId).subscribe(employee => this.employee = employee, error => console.log(error));
   }
 
   getSubdivisions(): void {
-    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions);
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => console.log(error));
   }
 
   saveEmployee(employee: NgForm): void {
-    if (employee.value.name != "") {
-      this.employee.name = employee.value.name;
+
+    this.employee.name = employee.value.name == "" ? this.employee.name : employee.value.name;
+    this.employee.surname = employee.value.surname == "" ? this.employee.surname : employee.value.surname;
+    this.employee.patronymic = employee.value.patronymic == "" ? this.employee.patronymic : employee.value.patronymic;
+
+    if (this.employee.name == "") {
+      this.isError = true;
+      return;
     }
-    this.employee.patronymic = employee.value.patronymic;
-    console.log(employee);
-    this.employeeService.editEmployee(this.employee).subscribe( () => this.router.navigate(['employes/'] ));
+
+    this.employeeService.editEmployee(this.employee).subscribe( () => this.router.navigate(['employes/'] ), error => console.log(error));
   }
 }

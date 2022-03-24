@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { Employee, Sex } from 'src/app/dto/Employee';
 import { Subdivision } from 'src/app/dto/Subdivision';
 import { SubdivisionService } from 'src/app/subdivisions/shared/subdivision.service';
@@ -15,11 +16,11 @@ import { EmployeeService } from '../shared/employee.service';
 
 /** order create component*/
 export class CreateEmployeeComponent implements OnInit {
-  selectedSubdivision: number = 0;
+  selectedSubdivision: number = 1;
   selectedSex: Sex = 0;
   subdivisions: Subdivision[] = [];
   isError: boolean = false;
-  sexTypes = Object.values(Sex).filter(value => typeof value != 'number');
+  sexTypes: (Sex | string)[] = Object.values(Sex).filter(value => typeof value != 'number');
 
   constructor(
     private router: Router,
@@ -32,23 +33,24 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   getSubdivisions(): void {
-    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions);
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => console.log(error));
   }
 
   createEmployee(employee: NgForm): void {
-    let newEmployee = <Employee>{};
-    newEmployee.employeeId = 0;
-    newEmployee.name = employee.value.name;
-    newEmployee.surname = employee.value.surname;    
-    newEmployee.dateofBirth = employee.value.dateofBirth;
-    newEmployee.sex = this.convertSex(employee.value.sex);    
-    newEmployee.subdivisionId = this.selectedSubdivision;
+    if (employee.value.name == "") {
+      this.isError = true;
+      return;
+    }
 
-    console.log(newEmployee);
+    const newEmployee = <Employee> {
+      name: employee.value.name,
+      surname: employee.value.surname,
+      dateofBirth: employee.value.dateofBirth,
+      sex: this.convertSex(employee.value.sex),
+      subdivisionId: employee.value.subdivision
+    };
 
-    if (newEmployee.name !== "" && newEmployee.subdivisionId !== undefined) {
-      this.employeeService.addEmployee(newEmployee).subscribe( () => this.router.navigate(['employes/'] ));
-    } else { this.isError = true}
+    this.employeeService.addEmployee(newEmployee).subscribe( () => this.router.navigate(['employes/'] ), error => console.log(error));
   }
 
   convertSex(sex: string): number {

@@ -1,10 +1,9 @@
 <form #newEmployee="ngForm">
     <div class="employee-tuning">
       <div>
-        <label>Имя заказа</label>
-        <input ngModel name="name" type="text" value="{{employee.name}}" class="add-name">
-        <input ngModel name="surname" type="text" value="{{employee.surname}}" class="add-surname">
-        <input ngModel name="patronymic" type="text" value="{{employee.patronymic}}" class="add-patronymic">
+        <div><input ngModel name="name" placeholder="Имя" type="text" value="{{employee.name}}" class="add-name"></div>
+        <div><input ngModel name="surname" placeholder="Фамилия" type="text" value="{{employee.surname}}" class="add-surname"></div>
+        <div><input ngModel name="patronymic"  placeholder="Отчество" type="text" value="{{employee.patronymic}}" class="add-patronymic"></div>
       </div>
       <div>
         <label for="select">Подразделение</label>

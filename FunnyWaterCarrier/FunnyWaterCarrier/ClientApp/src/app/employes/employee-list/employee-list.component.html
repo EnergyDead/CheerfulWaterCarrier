@@ -1,8 +1,8 @@
 <div class="list-employee">
+  <h4>Сотрудники</h4>
     <div *ngFor="let employee of employes"  class="employee-blick link d-flex">
         <div (click)="goTo(employee.employeeId)" class="employee">
-          <div class="employee-id">{{employee.employeeId}}</div>
-          {{employee.name.substring(0, 80)}}          
+          {{employee.name.substring(0, 40)}} {{employee.surname.substring(0, 40)}}       
         </div>
     </div>
     <button [routerLink]="['/employee/create']" class="button">Добавить</button>

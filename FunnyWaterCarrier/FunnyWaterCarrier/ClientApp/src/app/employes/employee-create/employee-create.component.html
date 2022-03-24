@@ -6,21 +6,23 @@
       </div>
       <div>
           <label>Фамилия</label>
-          <input ngModel name="surname" type="text" placeholder="Фамилия" class="add-name">
+          <input ngModel name="surname" type="text" placeholder="Фамилия" class="add-surname">
       </div>
       <div>
           <label>Дата рожения</label>
-          <input ngModel name="dateofBirth" type="text" placeholder="Формат: ГГГГ-ММ-ДД" class="add-name">
+          <input ngModel name="dateofBirth" type="text" placeholder="Формат: ГГГГ-ММ-ДД" class="add-dateofBirth">
       </div>
       <div>
         <label for="select">Пол</label>
-        <select ngModel name="sex" class="add-subdivision">
+        <select ngModel name="sex" class="add-sex">       
+          <option value="" disabled>Пол</option>
           <option *ngFor="let sex of sexTypes" [ngValue]="sex">{{sex}}</option>
         </select>
       </div>
       <div>
-        <label for="select">Подразделение</label>
-        <select [(ngModel)]="selectedSubdivision" name="subdivision" class="add-subdivision">
+        <label for="select">Отдел</label>
+        <select ngModel name="subdivision" class="add-subdivision">          
+          <option value="" disabled>Подразделение</option>
           <option *ngFor="let subdivision of subdivisions" [ngValue]="subdivision.subdivisionId">{{subdivision.name}}</option>
         </select>
       </div>

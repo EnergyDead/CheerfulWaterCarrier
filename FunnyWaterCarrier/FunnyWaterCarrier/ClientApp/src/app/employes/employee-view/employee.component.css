@@ -1,3 +1,10 @@
 .delete-button {
     margin-left: 10px;
 }
+
+.view-subdivision {
+    cursor: pointer; 
+}
+.view-surname, .view-name, .view-patronymic, .view-dateofBirth, .view-sex, .view-subdivision {
+ margin-bottom: 7px;
+}
