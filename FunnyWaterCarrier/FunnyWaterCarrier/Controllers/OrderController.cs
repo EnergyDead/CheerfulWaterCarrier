@@ -2,6 +2,7 @@
 using FunnyWaterCarrier.Data.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace FunnyWaterCarrier.Controllers
 {
@@ -17,33 +18,48 @@ namespace FunnyWaterCarrier.Controllers
         }
 
         [HttpGet( "orders" )]
-        public ActionResult<List<Order>> GetOrders()
+        public List<Order> GetOrders()
         {
             return _orderService.GetOrders();
         }
 
         [HttpGet( "order/{id}" )]
-        public ActionResult<Order> GetOrder( int id )
+        public Order GetOrder( int id )
         {
             return _orderService.GetOrder( id );
         }
 
         [HttpPost( "order/{id}/edit" )]
-        public bool EditOrder( Order order )
+        public HttpResponseMessage EditOrder( Order order )
         {
-            return _orderService.EditOrder( order );
+            _orderService.EditOrder( order );
+
+            return new HttpResponseMessage( GetCode( _orderService.Errors().Count ) );
         }
 
         [HttpPost( "order/add" )]
-        public bool AddOrder( Order order )
+        public HttpResponseMessage AddOrder( Order order )
         {
-            return _orderService.AddOrder( order );
+            _orderService.AddOrder( order );
+
+            return new HttpResponseMessage( GetCode( _orderService.Errors().Count ) );
         }
 
         [HttpPost( "order/{id}/delete" )]
-        public bool DeleteOrder( int id )
+        public HttpResponseMessage DeleteOrder( int id )
         {
-            return _orderService.DeleteOrder( id );
+            _orderService.DeleteOrder( id );
+
+            return new HttpResponseMessage( GetCode( _orderService.Errors().Count ) );
+        }
+
+        private static HttpStatusCode GetCode( int errorCount )
+        {
+            if ( errorCount > 0 )
+            {
+                return HttpStatusCode.BadRequest;
+            }
+            return  HttpStatusCode.OK;
         }
     }
 }

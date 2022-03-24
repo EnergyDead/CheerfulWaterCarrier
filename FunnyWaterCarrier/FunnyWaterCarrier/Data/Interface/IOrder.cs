@@ -7,8 +7,9 @@ namespace FunnyWaterCarrier.Data.Interface
     {
         public List<Order> GetOrders();
         public Order GetOrder( int orderId );
-        public bool AddOrder( Order order );
-        public bool EditOrder( Order order );
-        public bool DeleteOrder( int orderId );
+        public void AddOrder( Order order );
+        public void EditOrder( Order order );
+        public void DeleteOrder( int orderId );
+        public List<string> Errors();
     }
 }

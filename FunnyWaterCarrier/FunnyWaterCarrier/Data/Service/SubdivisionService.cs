@@ -1,49 +1,111 @@
-﻿using FunnyWaterCarrier.Data.Interface;
-using FunnyWaterCarrier.Data.Stub;
+﻿using EntityFramework;
+using FunnyWaterCarrier.Data.Interface;
+using FunnyWaterCarrier.Data.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FunnyWaterCarrier.Data.Service
 {
     public class SubdivisionService : ISubdivision
     {
-        readonly SubdivisionStub _subdivisionStub;
-        readonly string _connectionString;
-        public SubdivisionService(string connectionString )
+        private List<string> _errors;
+        public List<string> Errors()
         {
-            _subdivisionStub = new();
-            _connectionString = connectionString;
+            return _errors;
         }
 
-        public bool AddSubdivision( Model.Subdivision subdivision )
+        public SubdivisionService()
         {
-            int index = _subdivisionStub.Subdivisions.Select( subdivision => subdivision.SubdivisionId ).Max();
-            subdivision.SubdivisionId = index + 1;
-            _subdivisionStub.Subdivisions.Add( subdivision );
-
-            return true;
+            _errors = new();
         }
 
-        public bool DeleteSubdivision( int id )
+        public void AddSubdivision( Subdivision subdivision )
         {
-            var subdivision = _subdivisionStub.Subdivisions.FirstOrDefault( subdivision => subdivision.SubdivisionId == id );
-            _subdivisionStub.Subdivisions.Remove( subdivision );
-
-            return true;
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    db.Subdivision.Add( subdivision );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
         }
 
-        public bool EditSubdivision( Model.Subdivision subdivision )
+        public void DeleteSubdivision( int id )
         {
-            return true;
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    var subdivision = db.Subdivision.FirstOrDefault( subdivision => subdivision.SubdivisionId == id );
+                    db.Remove( subdivision );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
         }
 
-        public ActionResult<Model.Subdivision> GetSubdivision( int id )
+        public void EditSubdivision( Subdivision subdivision )
         {
-            return _subdivisionStub.Subdivisions.First( ordr => ordr.SubdivisionId == id );
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    db.Subdivision.Update( subdivision );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
         }
 
-        public ActionResult<List<Model.Subdivision>> GetSubdivisions()
+        public Subdivision GetSubdivision( int id )
         {
-            return _subdivisionStub.Subdivisions;
+            Subdivision subdivision = new();
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    subdivision = db.Subdivision.FirstOrDefault( subdivision => subdivision.SubdivisionId == id );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
+            return subdivision;
+        }
+
+        public List<Subdivision> GetSubdivisions()
+        {
+            List<Subdivision> subdivisions = new();
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    subdivisions = db.Subdivision.ToList();
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
+            return subdivisions;
         }
     }
 }

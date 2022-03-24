@@ -25,11 +25,12 @@ export class SubdivisionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getOrder();
+    this.getSubdivision();
   }
 
-  getOrder(): void {
+  getSubdivision(): void {
     const subdivisionId = +this.route.snapshot.paramMap.get('subdivisionId')!;
+    console.log(subdivisionId);
     this.subdivisionService.getSubdivision(subdivisionId).subscribe(subdivision => {
       this.subdivision = subdivision;
       this.getExecutor(subdivision.supervisorId);

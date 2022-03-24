@@ -5,10 +5,11 @@ namespace FunnyWaterCarrier.Data.Interface
 {
     public interface ISubdivision
     {
-        public ActionResult<Subdivision> GetSubdivision( int id );
-        public ActionResult<List<Subdivision>> GetSubdivisions();
-        public bool AddSubdivision( Subdivision subdivision );
-        public bool EditSubdivision( Subdivision subdivision );
-        public bool DeleteSubdivision( int id );
+        public Subdivision GetSubdivision( int id );
+        public List<Subdivision> GetSubdivisions();
+        public void AddSubdivision( Subdivision subdivision );
+        public void EditSubdivision( Subdivision subdivision );
+        public void DeleteSubdivision( int id );
+        public List<string> Errors();
     }
 }

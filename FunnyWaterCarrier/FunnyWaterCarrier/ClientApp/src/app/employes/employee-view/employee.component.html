@@ -4,8 +4,8 @@
           <div>Фамилия: {{employee.surname}}</div>
           <div>Имя: {{employee.name}}</div>
           <div>Отчество: {{employee.patronymic}}</div>
-          <div>Возраст: {{employee.bydthDay}}</div>
-          <div>Пол: {{employee.sex}}</div>
+          <div>Дата рождения: {{employee.dateofBirth | date:'mediumDate'}}</div>
+          <div>Пол: {{sex}}</div>
           <div class="executor" (click)="goToSubdivision(employee.subdivisionId)">Подразделение: {{subdivision.name}}</div>
     </div>
     <button (click)="goToEdit(employee.employeeId)" class="button">Редактировать</button>

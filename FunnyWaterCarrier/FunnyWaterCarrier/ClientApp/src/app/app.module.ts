@@ -53,8 +53,8 @@ import { CreateSubdivisionComponent } from './subdivisions/subdivision-create/su
       { path: 'employes', component: EmployesComponent, pathMatch: 'full' },
 
       { path: 'subdivision/create', component: CreateSubdivisionComponent, pathMatch: 'full' },
-      { path: 'subdivision/:subdivisioneId', component: SubdivisionComponent, pathMatch: 'full' },
-      { path: 'subdivision/:subdivisioneId/edit', component: EditSubdivisionComponent, pathMatch: 'full' },
+      { path: 'subdivision/:subdivisionId', component: SubdivisionComponent, pathMatch: 'full' },
+      { path: 'subdivision/:subdivisionId/edit', component: EditSubdivisionComponent, pathMatch: 'full' },
       { path: 'subdivisions', component: SubdivisionsComponent, pathMatch: 'full' } 
     ])
   ],

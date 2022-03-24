@@ -14,7 +14,9 @@ import { EmployeeService } from '../shared/employee.service';
 
 /** orders component*/
 export class EmployeeComponent implements OnInit {
+  
   employee: Employee = {} as Employee;
+  sex: string = "";
   subdivision: Subdivision = {} as Subdivision;
 
   constructor(
@@ -33,8 +35,15 @@ export class EmployeeComponent implements OnInit {
     const orderId = +this.route.snapshot.paramMap.get('employeeId')!;
     this.employeeService.getEmployee(orderId).subscribe(employee => {
       this.employee = employee,
+      console.log(employee);
+      console.log(typeof employee.dateofBirth);
+      this.sex = this.convertSex(employee.sex);
       this.getSubdivision(employee.subdivisionId);
     });
+  }
+
+  convertSex(sexType: number):string {
+    return sexType == 0 ? "мужской" : "женский";
   }
 
   getSubdivision(id: number):void {

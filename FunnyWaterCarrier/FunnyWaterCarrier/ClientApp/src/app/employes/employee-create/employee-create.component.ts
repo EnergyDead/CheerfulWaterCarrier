@@ -16,7 +16,7 @@ import { EmployeeService } from '../shared/employee.service';
 /** order create component*/
 export class CreateEmployeeComponent implements OnInit {
   selectedSubdivision: number = 0;
-  selectedSex: Sex = Sex.femail;
+  selectedSex: Sex = 0;
   subdivisions: Subdivision[] = [];
   isError: boolean = false;
   sexTypes = Object.values(Sex).filter(value => typeof value != 'number');
@@ -40,12 +40,18 @@ export class CreateEmployeeComponent implements OnInit {
     newEmployee.employeeId = 0;
     newEmployee.name = employee.value.name;
     newEmployee.surname = employee.value.surname;    
-    newEmployee.bydthDay = employee.value.bydthDay;
-
+    newEmployee.dateofBirth = employee.value.dateofBirth;
+    newEmployee.sex = this.convertSex(employee.value.sex);    
     newEmployee.subdivisionId = this.selectedSubdivision;
+
     console.log(newEmployee);
+
     if (newEmployee.name !== "" && newEmployee.subdivisionId !== undefined) {
       this.employeeService.addEmployee(newEmployee).subscribe( () => this.router.navigate(['employes/'] ));
     } else { this.isError = true}
+  }
+
+  convertSex(sex: string): number {
+    return sex == 'mail' ? 0 : 1;
   }
 }

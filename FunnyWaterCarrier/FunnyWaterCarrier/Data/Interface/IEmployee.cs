@@ -5,10 +5,11 @@ namespace FunnyWaterCarrier.Data.Interface
 {
     public interface IEmployee
     {
-        public ActionResult<List<Employee>> GetEmployes();
-        public ActionResult<Employee> GetEmployee( int id );
-        public bool AddEmployee( Employee employee );
-        public bool EditEmployee( Employee employee );
-        public bool DeleteEmployee( int id );
+        public List<Employee> GetEmployes();
+        public Employee GetEmployee( int id );
+        public void AddEmployee( Employee employee );
+        public void EditEmployee( Employee employee );
+        public void DeleteEmployee( int id );
+        public List<string> Errors();
     }
 }

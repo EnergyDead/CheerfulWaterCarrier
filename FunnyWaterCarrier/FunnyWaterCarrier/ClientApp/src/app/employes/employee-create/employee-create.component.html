@@ -10,11 +10,11 @@
       </div>
       <div>
           <label>Дата рожения</label>
-          <input ngModel name="bydthDay" type="text" placeholder="Дата рожения" class="add-name">
+          <input ngModel name="dateofBirth" type="text" placeholder="Формат: ГГГГ-ММ-ДД" class="add-name">
       </div>
       <div>
         <label for="select">Пол</label>
-        <select [(ngModel)]="selectedSex" name="subdivision" class="add-subdivision">
+        <select ngModel name="sex" class="add-subdivision">
           <option *ngFor="let sex of sexTypes" [ngValue]="sex">{{sex}}</option>
         </select>
       </div>

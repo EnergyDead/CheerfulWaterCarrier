@@ -1,12 +1,11 @@
-
 export interface Employee {
     employeeId: number,
     name: string,
     surname: string,
-    bydthDay: Date,
+    dateofBirth: Date,
     patronymic: string,
     subdivisionId: number,
-    sex: Sex
+    sex: number
 }
 
 export enum Sex {

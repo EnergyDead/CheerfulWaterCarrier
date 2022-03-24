@@ -1,52 +1,110 @@
-﻿using FunnyWaterCarrier.Data.Interface;
+﻿using EntityFramework;
+using FunnyWaterCarrier.Data.Interface;
 using FunnyWaterCarrier.Data.Model;
-using FunnyWaterCarrier.Data.Stub;
-using Microsoft.AspNetCore.Mvc;
 
 namespace FunnyWaterCarrier.Data.Service
 {
     public class OrderService : IOrder
     {
-        readonly OrderStub _orderStub;
-        readonly string _connectionString;
-        public OrderService(string connectionString )
+        private List<string> _errors;
+        public List<string> Errors()
         {
-            _orderStub = new();
-            _connectionString = connectionString;
+            return _errors;
         }
 
-        public bool AddOrder( Order order )
+        public OrderService()
         {
-            int index = _orderStub.Orders.Select( order => order.OrderId ).Max();
-            order.OrderId = index + 1;
-            _orderStub.Orders.Add( order );
-
-            return true;
+            _errors = new();
         }
 
-        public bool DeleteOrder( int orderId )
+        public void AddOrder( Order order )
         {
-            var order = _orderStub.Orders.FirstOrDefault( order => order.OrderId == orderId );
-            _orderStub.Orders.Remove( order );
-
-            return true;
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    db.Order.Add( order );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
         }
 
-        public bool EditOrder( Order newOrder )
+        public void DeleteOrder( int orderId )
         {
-            _orderStub.Orders.Where( order => order.OrderId == newOrder.OrderId ).Select( order => order = newOrder );
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    var order = db.Order.FirstOrDefault( order => order.OrderId == orderId );
+                    db.Remove( order );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
+        }
 
-            return true;
+        public void EditOrder( Order newOrder )
+        {
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    db.Order.Update( newOrder );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
         }
 
         public Order GetOrder( int orderId )
         {
-            return _orderStub.Orders.First( ordr => ordr.OrderId == orderId );
+            Order order = new();
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    order = db.Order.FirstOrDefault( order => order.OrderId == orderId );
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
+            return order;
         }
 
         public List<Order> GetOrders()
         {
-            return _orderStub.Orders;
+            List<Order> orders = new();
+            try
+            {
+                using ( ApplicationContext db = new ApplicationContext() )
+                {
+                    orders = db.Order.ToList();
+                    db.SaveChanges();
+                }
+            }
+            catch ( Exception error )
+            {
+                _errors.Add( error.Message );
+                throw;
+            }
+            return orders;
         }
     }
 }

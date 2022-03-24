@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/dto/Employee';
 import { Subdivision } from 'src/app/dto/Subdivision';
+import { SubdivisionService } from 'src/app/subdivisions/shared/subdivision.service';
 import { EmployeeService } from '../shared/employee.service';
 
 
@@ -17,26 +18,34 @@ export class EditEmployeeComponent implements OnInit {
   subdivisions: Subdivision[] = [];
   employee: Employee = {} as Employee;
   isError: boolean = false;
+
   constructor(
     private router: Router,
-    private EmployeeService: EmployeeService,
+    private employeeService: EmployeeService,
+    private subdivisionService: SubdivisionService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.getEmployee();
+    this.getSubdivisions();
   }
 
   getEmployee(): void {
     const employeeId = +this.route.snapshot.paramMap.get('employeeId')!;
-    this.EmployeeService.getEmployee(employeeId).subscribe(employee => this.employee = employee);
+    this.employeeService.getEmployee(employeeId).subscribe(employee => this.employee = employee);
+  }
+
+  getSubdivisions(): void {
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions);
   }
 
   saveEmployee(employee: NgForm): void {
     if (employee.value.name != "") {
       this.employee.name = employee.value.name;
-      this.employee.patronymic = "";
     }
-    this.EmployeeService.editEmployee(this.employee).subscribe( () => this.router.navigate(['employes/'] ));
+    this.employee.patronymic = employee.value.patronymic;
+    console.log(employee);
+    this.employeeService.editEmployee(this.employee).subscribe( () => this.router.navigate(['employes/'] ));
   }
 }

@@ -1,6 +1,7 @@
 ﻿using FunnyWaterCarrier.Data.Interface;
 using FunnyWaterCarrier.Data.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace FunnyWaterCarrier.Controllers
 {
@@ -16,33 +17,47 @@ namespace FunnyWaterCarrier.Controllers
         }
 
         [HttpGet( "employes" )]
-        public ActionResult<List<Employee>> GetEmployes()
+        public List<Employee> GetEmployes()
         {
             return _employeeService.GetEmployes();
         }
 
         [HttpGet( "employee/{id}" )]
-        public ActionResult<Employee> GetEmployee( int id )
+        public Employee GetEmployee( int id )
         {
             return _employeeService.GetEmployee( id );
         }
 
-        [HttpPost( "employee/{id}/edit" )]  
-        public bool EditEmployee( Employee employee )
+        [HttpPost( "employee/{id}/edit" )]
+        public HttpResponseMessage EditEmployee( Employee employee )
         {
-            return _employeeService.EditEmployee( employee );
+            _employeeService.EditEmployee( employee );
+
+            return new HttpResponseMessage( GetCode( _employeeService.Errors().Count ) );
         }
 
         [HttpPost( "employee/{id}/delete" )]
-        public bool DeleteEmployee( int id )
+        public HttpResponseMessage DeleteEmployee( int id )
         {
-            return _employeeService.DeleteEmployee( id );
+            _employeeService.DeleteEmployee( id );
+            return new HttpResponseMessage( GetCode( _employeeService.Errors().Count ) );
         }
 
         [HttpPost( "employee/add" )]
-        public bool AddEmployee( Employee employee )
+        public HttpResponseMessage AddEmployee( Employee employee )
         {
-            return _employeeService.AddEmployee( employee );
+            _employeeService.AddEmployee( employee );
+
+            return new HttpResponseMessage( GetCode( _employeeService.Errors().Count ) );
+        }
+
+        private static HttpStatusCode GetCode( int errorCount )
+        {
+            if ( errorCount > 0 )
+            {
+                return HttpStatusCode.BadRequest;
+            }
+            return HttpStatusCode.OK;
         }
     }
 }

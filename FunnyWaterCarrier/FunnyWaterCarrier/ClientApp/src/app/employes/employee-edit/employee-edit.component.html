@@ -9,7 +9,7 @@
       <div>
         <label for="select">Подразделение</label>
         <select [(ngModel)]="employee.subdivisionId" name="subdivision" class="add-subdivision">
-          <option *ngFor="let subdivision of subdivisions" [ngValue]="subdivision.subdivisionId">{{employee.name}}</option>
+          <option *ngFor="let subdivision of subdivisions" [ngValue]="subdivision.subdivisionId">{{subdivision.name}}</option>
         </select>
       </div>
     </div>
