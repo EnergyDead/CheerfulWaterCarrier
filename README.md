@@ -22,9 +22,13 @@
 *Для одного заказа возможно указать несколько тегов, также один тег может быть указан у множества заказов.
 
 # Инструкция
-1. Запустить приложение в Visual Studio 2022
-2. Собрать проект
-3. Открыть Package Manager Console
-4. Выполнить ```Add-Migration InitialCreate```
-5. Выполнить ```Update-Database```
-6. Запустить проект
+1) Должно быть установленно:
+	Node js
+	VisualStudio 2022
+	SQLEXPRESS
+2) Запустить приложение в Visual Studio 2022
+3)Собрать проект
+4) Открыть Package Manager Console
+	Выполнить ```Add-Migration InitialCreate```
+	Выполнить ```Update-Database```
+5) Запустить проект
