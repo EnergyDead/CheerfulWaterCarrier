@@ -42,7 +42,7 @@ export class EditSubdivisionComponent implements OnInit {
     if (newOrder.value.name != "") {
       this.subdivision.name = newOrder.value.name;
     }
-    this.subdivisionService.editSubdivision(this.subdivision).subscribe( _ => this.router.navigate(['subdivisions/'] ));
+    this.subdivisionService.editSubdivision(this.subdivision).subscribe( _ => this.router.navigate(['subdivisions/']), error => console.log(error));
   }
 
   getEmployes(): void {

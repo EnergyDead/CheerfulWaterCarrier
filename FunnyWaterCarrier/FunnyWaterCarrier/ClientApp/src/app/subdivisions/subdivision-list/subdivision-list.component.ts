@@ -25,7 +25,7 @@ export class SubdivisionsComponent implements OnInit {
   }
 
   getSbdivision(): void {
-    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions);
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => console.log(error));
   }
 
   goTo(id: number):void {

@@ -33,13 +33,16 @@ export class CreateSubdivisionComponent implements OnInit {
   }
 
   addSubdivision(create: NgForm) {
-    let newSubdivision = <Subdivision>{};
-    newSubdivision.subdivisionId = 0;
-    newSubdivision.name = create.value.name;
-    newSubdivision.supervisorId = this.selectedEmployee;
-    if (newSubdivision.name !== "" && newSubdivision.supervisorId !== undefined) {
-      this.subdivisionService.addSubdivision(newSubdivision).subscribe( () => this.router.navigate(['subdivisions/'] ));
-    } else { this.isError = true}
+    const newSubdivision = <Subdivision>{
+      name: create.value.name,
+      supervisorId: this.selectedEmployee
+    };
+    if (newSubdivision.name == "" || newSubdivision.supervisorId == undefined) { 
+      this.isError = true;
+      return;
+    }
+    
+    this.subdivisionService.addSubdivision(newSubdivision).subscribe( () => this.router.navigate(['subdivisions/']), error => console.log(error));
   }
 
   getEmployes(): void {

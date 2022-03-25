@@ -1,9 +1,8 @@
 <div class="subdivision">
     <div>
-          <div class="subdivision-id">{{subdivision.subdivisionId}}</div>
-          <div>Название отдела: {{subdivision.name}}</div>
-          <div class="executor" (click)="goToExecutor(subdivision.supervisorId)">Руководитель: {{executor.name}}</div>
+        <div class="subdivision-name">Название отдела: {{subdivision.name}}</div>
+        <div class="subdivision-executor" (click)="goToExecutor(subdivision.supervisorId)">Руководитель: {{executor.name}}</div>
     </div>
     <button (click)="goToEdit(subdivision.subdivisionId)" class="button">Редактировать</button>
     <button (click)="delete()" class="button delete-button">Удалить</button>
-</div>  
+</div>

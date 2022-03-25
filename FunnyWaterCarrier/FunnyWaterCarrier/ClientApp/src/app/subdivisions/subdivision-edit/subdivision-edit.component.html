@@ -2,11 +2,11 @@
   <div class="subdivision-tuning">
     <div>
       <label>Имя заказа</label>
-      <input ngModel name="name" type="text" value="{{subdivision.name}}" class="add-name">
+      <input ngModel name="name" type="text" value="{{subdivision.name}}" class="edit-name">
     </div>
     <div>
       <label for="select">Руководитель</label>
-      <select [(ngModel)]="subdivision.supervisorId" name="employee" class="add-employee">
+      <select [(ngModel)]="subdivision.supervisorId" name="employee" class="edit-employee">
         <option *ngFor="let employee of employes" [ngValue]="employee.employeeId">{{employee.name}}</option>
       </select>
     </div>

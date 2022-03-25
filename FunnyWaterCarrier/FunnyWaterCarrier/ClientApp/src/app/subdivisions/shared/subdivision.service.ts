@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Action } from 'rxjs/internal/scheduler/Action';
-import { Order } from 'src/app/dto/Order';
+
 import { Subdivision } from 'src/app/dto/Subdivision';
 
 @Injectable({ providedIn: 'root' })
@@ -34,8 +33,7 @@ export class SubdivisionService {
 
     public editSubdivision(subdivision: Subdivision): Observable<Subdivision> {
         const url = `${this.baseUrl}api/subdivision/${subdivision.subdivisionId}/edit`;
-        // todo: проверить, может что-то ещё нужно
-        return this.http.post<Subdivision>(url, subdivision);
+        return this.http.post<Subdivision>(url, subdivision, this.httpOptions);
     }
 
     public deleteSubdivision(id: number): Observable<boolean> {

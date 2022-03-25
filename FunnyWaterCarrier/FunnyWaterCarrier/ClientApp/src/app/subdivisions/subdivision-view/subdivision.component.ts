@@ -38,7 +38,7 @@ export class SubdivisionComponent implements OnInit {
   }
 
   getExecutor(id: number): void {
-    this.employeeService.getEmployee(id).subscribe(employee => this.executor = employee );
+    this.employeeService.getEmployee(id).subscribe(employee => this.executor = employee, error => console.log(error) );
   }
   
   goToExecutor(id: number):void {
@@ -50,6 +50,6 @@ export class SubdivisionComponent implements OnInit {
   }
 
   delete(): void {
-    this.subdivisionService.deleteSubdivision(this.subdivision.subdivisionId).subscribe(_ => this.router.navigate([`subdivisions`]));
+    this.subdivisionService.deleteSubdivision(this.subdivision.subdivisionId).subscribe(_ => this.router.navigate([`subdivisions`]), error => console.log(error));
   }
 }
