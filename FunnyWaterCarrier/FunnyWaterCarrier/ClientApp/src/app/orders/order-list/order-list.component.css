@@ -24,3 +24,6 @@
     max-height: 90vh;
     padding: 0px;
 }
+.order-empty {
+    margin: 10px;
+}

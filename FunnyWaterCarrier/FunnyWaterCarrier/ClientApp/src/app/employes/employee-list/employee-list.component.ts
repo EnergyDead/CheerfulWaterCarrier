@@ -13,6 +13,7 @@ import { EmployeeService } from '../shared/employee.service';
 
 /** employes component*/
 export class EmployesComponent implements OnInit {
+  error: string = "";
   employes: Employee[] = [];
 
   constructor(
@@ -25,7 +26,7 @@ export class EmployesComponent implements OnInit {
   }
 
   GetEmployes(): void {
-    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => console.log(error));
+    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => this.error = error.message);
   }
 
   goTo(id: number):void {

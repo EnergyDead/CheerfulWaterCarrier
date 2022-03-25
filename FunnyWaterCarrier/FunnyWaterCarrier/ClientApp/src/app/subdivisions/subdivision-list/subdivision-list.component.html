@@ -1,4 +1,7 @@
 <div class="list-subdivision">
+  <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
+  <h4>Подразделения</h4>
+  <div *ngIf="!subdivisions.length" class="order-empty">Список подразделений пуст.</div>
   <div *ngFor="let subdivision of subdivisions"  class="subdivision-blick link d-flex">
       <div (click)="goTo(subdivision.subdivisionId)" class="subdivision">
         {{subdivision.name.substring(0, 80)}}          

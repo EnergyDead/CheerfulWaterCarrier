@@ -1,4 +1,5 @@
 <form #newSubdivision="ngForm">
+  <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
   <div class="subdivision-tuning">
     <div>
       <label>Имя заказа</label>

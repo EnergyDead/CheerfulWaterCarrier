@@ -16,6 +16,7 @@ import { EmployeeService } from '../shared/employee.service';
 
 /** order create component*/
 export class CreateEmployeeComponent implements OnInit {
+  error: string = "";
   selectedSubdivision: number = 1;
   selectedSex: Sex = 0;
   subdivisions: Subdivision[] = [];
@@ -33,7 +34,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   getSubdivisions(): void {
-    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => console.log(error));
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => this.error = error.message);
   }
 
   createEmployee(employee: NgForm): void {
@@ -50,7 +51,7 @@ export class CreateEmployeeComponent implements OnInit {
       subdivisionId: employee.value.subdivision
     };
 
-    this.employeeService.addEmployee(newEmployee).subscribe( () => this.router.navigate(['employes/'] ), error => console.log(error));
+    this.employeeService.addEmployee(newEmployee).subscribe( () => this.router.navigate(['employes/'] ), error => this.error = error.message);
   }
 
   convertSex(sex: string): number {

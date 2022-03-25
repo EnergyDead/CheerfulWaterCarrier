@@ -16,6 +16,7 @@ import { OrderService } from '../shared/order.service';
 
 /** order create component*/
 export class CreateOrderComponent implements OnInit {
+  error: string = "";
   employes: Employee[] = [];
   selectedEmployee: number = 0;
   isError: boolean = false;
@@ -40,10 +41,10 @@ export class CreateOrderComponent implements OnInit {
       return;
     }
 
-    this.orderService.addOrder(newOrder).subscribe( () => this.router.navigate(['orders/']), error => console.log(error));
+    this.orderService.addOrder(newOrder).subscribe( () => this.router.navigate(['orders/']), error => this.error = error.message);
   }
 
   getEmployes(): void {
-    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => console.log(error));
+    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => this.error = error.message);
   }
 }

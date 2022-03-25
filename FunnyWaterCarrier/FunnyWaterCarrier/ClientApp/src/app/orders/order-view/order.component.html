@@ -1,4 +1,5 @@
 <div class="order">
+    <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
     <div>
         <div class="order-id">Номер заказа: {{order.orderId}}</div>
         <div class="order-name">Название товара: {{order.name}}</div>

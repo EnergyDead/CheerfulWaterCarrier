@@ -1,4 +1,5 @@
 <div class="employee">
+    <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
     <div>
         <div [hidden]="!employee.surname" class="view-surname">Фамилия: {{employee.surname}}</div>
         <div class="view-name">Имя: {{employee.name}}</div>

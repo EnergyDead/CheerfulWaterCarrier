@@ -16,6 +16,7 @@ import { OrderService } from '../shared/order.service';
 
 /** order edit component*/
 export class EditOrderComponent implements OnInit {
+  error: string = "";
   employes: Employee[] = [];
   selectedEmployee: number = 0;
   isError: boolean = false;
@@ -36,17 +37,17 @@ export class EditOrderComponent implements OnInit {
 
   getOrder(): void {
     const orderId = +this.route.snapshot.paramMap.get('orderId')!;
-    this.orderService.getOrder(orderId).subscribe(order => this.order = order, error => console.log(error));
+    this.orderService.getOrder(orderId).subscribe(order => this.order = order, error => this.error = error.message);
   }
   
   saveOrder(newOrder: NgForm): void {
     if (newOrder.value.name != "") {
       this.order.name = newOrder.value.name;
     }
-    this.orderService.editOrder(this.order).subscribe( () => this.router.navigate(['orders/']), error => console.log(error));
+    this.orderService.editOrder(this.order).subscribe( () => this.router.navigate(['orders/']), error => this.error = error.message);
   }
 
   getEmployes(): void {
-    this.employeeService.getEmployes().subscribe(employes => this.employes = employes );
+    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => this.error = error.message);
   }
 }

@@ -1,4 +1,5 @@
 <form #employee="ngForm">
+    <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
     <div class="employee-tuning">
       <div>
         <label>Имя</label>

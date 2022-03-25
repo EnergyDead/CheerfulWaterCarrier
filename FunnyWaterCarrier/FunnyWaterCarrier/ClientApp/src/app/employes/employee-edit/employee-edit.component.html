@@ -1,4 +1,5 @@
 <form #newEmployee="ngForm">
+    <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
     <div class="employee-tuning">
       <div>
         <div><input ngModel name="name" placeholder="Имя" type="text" value="{{employee.name}}" class="add-name"></div>

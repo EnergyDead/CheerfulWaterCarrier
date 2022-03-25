@@ -15,6 +15,7 @@ import { SubdivisionService } from '../shared/subdivision.service';
 
 /** order edit component*/
 export class EditSubdivisionComponent implements OnInit {
+  error: string = "";
   employes: Employee[] = [];
   selectedEmployee: number = 0;
   isError: boolean = false;
@@ -35,14 +36,14 @@ export class EditSubdivisionComponent implements OnInit {
 
   getSubdivision(): void {
     const subdivisionId = +this.route.snapshot.paramMap.get('subdivisionId')!;
-    this.subdivisionService.getSubdivision(subdivisionId).subscribe(subdivision => this.subdivision = subdivision);
+    this.subdivisionService.getSubdivision(subdivisionId).subscribe(subdivision => this.subdivision = subdivision, error => this.error = error.message);
   }
   
   saveSubdivision(newOrder: NgForm): void {
     if (newOrder.value.name != "") {
       this.subdivision.name = newOrder.value.name;
     }
-    this.subdivisionService.editSubdivision(this.subdivision).subscribe( _ => this.router.navigate(['subdivisions/']), error => console.log(error));
+    this.subdivisionService.editSubdivision(this.subdivision).subscribe( _ => this.router.navigate(['subdivisions/']), error => this.error = error.message);
   }
 
   getEmployes(): void {

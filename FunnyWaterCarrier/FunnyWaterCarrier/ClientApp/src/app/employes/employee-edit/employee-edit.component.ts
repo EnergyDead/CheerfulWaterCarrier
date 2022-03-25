@@ -16,6 +16,7 @@ import { EmployeeService } from '../shared/employee.service';
 
 /** employee edit component*/
 export class EditEmployeeComponent implements OnInit {
+  error: string = "";
   subdivisions: Subdivision[] = [];
   employee: Employee = {} as Employee;
   isError: boolean = false;
@@ -34,11 +35,11 @@ export class EditEmployeeComponent implements OnInit {
 
   getEmployee(): void {
     const employeeId = +this.route.snapshot.paramMap.get('employeeId')!;
-    this.employeeService.getEmployee(employeeId).subscribe(employee => this.employee = employee, error => console.log(error));
+    this.employeeService.getEmployee(employeeId).subscribe(employee => this.employee = employee, error => this.error = error.message);
   }
 
   getSubdivisions(): void {
-    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => console.log(error));
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => this.error = error.message);
   }
 
   saveEmployee(employee: NgForm): void {
@@ -52,6 +53,6 @@ export class EditEmployeeComponent implements OnInit {
       return;
     }
 
-    this.employeeService.editEmployee(this.employee).subscribe( () => this.router.navigate(['employes/'] ), error => console.log(error));
+    this.employeeService.editEmployee(this.employee).subscribe( () => this.router.navigate(['employes/'] ), error => this.error = error.message);
   }
 }

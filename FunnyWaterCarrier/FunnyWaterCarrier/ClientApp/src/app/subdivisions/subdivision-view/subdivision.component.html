@@ -1,4 +1,5 @@
 <div class="subdivision">
+    <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
     <div>
         <div class="subdivision-name">Название отдела: {{subdivision.name}}</div>
         <div class="subdivision-executor" (click)="goToExecutor(subdivision.supervisorId)">Руководитель: {{executor.name}}</div>

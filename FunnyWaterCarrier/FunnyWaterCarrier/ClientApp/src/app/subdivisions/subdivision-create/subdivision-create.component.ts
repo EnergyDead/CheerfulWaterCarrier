@@ -16,6 +16,7 @@ import { SubdivisionService } from '../shared/subdivision.service';
 
 /** order create component*/
 export class CreateSubdivisionComponent implements OnInit {
+  error: string = "";
   employes: Employee[] = [];
   subdivision: Subdivision = {} as Subdivision;
   selectedEmployee: number = 0;
@@ -42,10 +43,10 @@ export class CreateSubdivisionComponent implements OnInit {
       return;
     }
     
-    this.subdivisionService.addSubdivision(newSubdivision).subscribe( () => this.router.navigate(['subdivisions/']), error => console.log(error));
+    this.subdivisionService.addSubdivision(newSubdivision).subscribe( () => this.router.navigate(['subdivisions/']), error => this.error = error.message);
   }
 
   getEmployes(): void {
-    this.employeeService.getEmployes().subscribe(employes => this.employes = employes );
+    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => this.error = error.message );
   }
 }

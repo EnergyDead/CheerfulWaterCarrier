@@ -1,5 +1,7 @@
 <div class="list-employee">
+  <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
   <h4>Сотрудники</h4>
+    <div *ngIf="!employes.length" class="employee-empty">Список сотрудников пуст.</div>
     <div *ngFor="let employee of employes"  class="employee-blick link d-flex">
         <div (click)="goTo(employee.employeeId)" class="employee">
           {{employee.name.substring(0, 40)}} {{employee.surname.substring(0, 40)}}       

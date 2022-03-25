@@ -14,6 +14,7 @@ import { SubdivisionService } from '../shared/subdivision.service';
 
 /* subdivision component */
 export class SubdivisionComponent implements OnInit {
+  error: string = "";
   subdivision: Subdivision = {} as Subdivision;
   executor: Employee = {} as Employee;
 

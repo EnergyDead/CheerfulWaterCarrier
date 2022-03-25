@@ -15,6 +15,7 @@ import { OrderService } from '../shared/order.service';
 
 /** orders component*/
 export class OrderComponent implements OnInit {
+  error: string = "";
   order: Order = {} as Order;
   executor: Employee = {} as Employee;
 
@@ -38,7 +39,7 @@ export class OrderComponent implements OnInit {
   }
 
   getExecutor(id: number): void {
-    this.employeeService.getEmployee(id).subscribe(employee => this.executor = employee, error => console.log(error));
+    this.employeeService.getEmployee(id).subscribe(employee => this.executor = employee, error => this.error = error.message);
   }
   
   goToExecutor(id: number):void {
@@ -50,6 +51,6 @@ export class OrderComponent implements OnInit {
   }
 
   delete(): void {
-    this.ordersService.deleteOrder(this.order.orderId).subscribe(_ => this.router.navigate([`orders`]), error => console.log(error));
+    this.ordersService.deleteOrder(this.order.orderId).subscribe(_ => this.router.navigate([`orders`]), error => this.error = error.message);
   }
 }

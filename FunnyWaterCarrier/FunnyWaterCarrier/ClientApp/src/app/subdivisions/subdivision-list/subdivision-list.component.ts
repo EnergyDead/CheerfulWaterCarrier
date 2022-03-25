@@ -14,6 +14,7 @@ import { SubdivisionService } from '../shared/subdivision.service';
 /** orders component*/
 export class SubdivisionsComponent implements OnInit {
   subdivisions: Subdivision[] = [];
+  error: string = "";
 
   constructor(
     private router: Router,
@@ -25,7 +26,7 @@ export class SubdivisionsComponent implements OnInit {
   }
 
   getSbdivision(): void {
-    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => console.log(error));
+    this.subdivisionService.getSubdivisions().subscribe(subdivisions => this.subdivisions = subdivisions, error => this.error = error.message);
   }
 
   goTo(id: number):void {

@@ -1,4 +1,7 @@
 <div class="list-order">
+  <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
+  <h4>Заказы</h4>
+  <div *ngIf="!orders.length" class="order-empty">Список заказов пуст.</div>
     <div *ngFor="let order of orders"  class="order-blick link d-flex">
         <div (click)="goTo(order.orderId)" class="order">
           <div class="order-id">номер: {{order.orderId}}</div>

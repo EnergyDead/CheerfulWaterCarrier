@@ -1,4 +1,5 @@
 <form #newOrder="ngForm">
+    <p *ngIf="error" class="error">Ошибка на стороне сервера: {{error}}</p>
     <div class="order-tuning">
       <div>
         <label>Имя заказа</label>

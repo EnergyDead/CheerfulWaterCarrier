@@ -13,6 +13,7 @@ import { OrderService } from '../shared/order.service';
 
 /** orders component*/
 export class OrdersComponent implements OnInit {
+  error: string = "";
   orders: Order[] = [];
 
   constructor(
@@ -25,7 +26,8 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrders(): void {
-    this.ordersService.getOrders().subscribe(orders => this.orders = orders, error => console.log(error));
+    this.ordersService.getOrders().subscribe(orders => this.orders = orders, error => this.error = error.message);
+    ;
   }
 
   goTo(id: number):void {

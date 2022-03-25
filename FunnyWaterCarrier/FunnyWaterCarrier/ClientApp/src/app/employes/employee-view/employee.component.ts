@@ -14,7 +14,7 @@ import { EmployeeService } from '../shared/employee.service';
 
 /** orders component*/
 export class EmployeeComponent implements OnInit {
-  
+  error: string = "";
   employee: Employee = {} as Employee;
   sex: string = "";
   subdivision: Subdivision = {} as Subdivision;
@@ -47,7 +47,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   getSubdivision(id: number):void {
-    this.subdivisionService.getSubdivision(id).subscribe(subdivision => this.subdivision = subdivision, error => console.log(error));
+    this.subdivisionService.getSubdivision(id).subscribe(subdivision => this.subdivision = subdivision, error => this.error = error.message);
   }
 
   goToEdit(id: number):void {
@@ -55,7 +55,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   delete(): void {
-    this.employeeService.deleteEmployee(this.employee.employeeId).subscribe( _ => this.router.navigate([`employes`]), error => console.log(error) );
+    this.employeeService.deleteEmployee(this.employee.employeeId).subscribe( _ => this.router.navigate([`employes`]), error => this.error = error.message);
   }
 
   goToSubdivision(id: number): void {
