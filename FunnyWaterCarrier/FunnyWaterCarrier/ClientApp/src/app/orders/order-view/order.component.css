@@ -5,3 +5,7 @@
 .delete-button {
     margin-left: 10px;
 }
+
+.order-id, .order-name, .order-executor {
+    margin-bottom: 10px;
+}

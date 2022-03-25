@@ -1,9 +1,9 @@
 <div class="order">
     <div>
-          <div class="order-id">{{order.orderId}}</div>
-          <div>Название товара: {{order.name}}</div>
-          <div class="executor" (click)="goToExecutor(order.employeeId)">Сотрудник: {{executor.name}}</div>
+        <div class="order-id">Номер заказа: {{order.orderId}}</div>
+        <div class="order-name">Название товара: {{order.name}}</div>
+        <div class="order-executor" (click)="goToExecutor(order.employeeId)">Сотрудник: {{executor.name}}</div>
     </div>
     <button (click)="goToEdit(order.orderId)" class="button">Редактировать</button>
     <button  (click)="delete()" class="button delete-button">Удалить</button>
-</div>  
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Employee } from 'src/app/dto/Employee';
 import { Order } from 'src/app/dto/Order';
 import { EmployeeService } from 'src/app/employes/shared/employee.service';
@@ -35,14 +36,14 @@ export class EditOrderComponent implements OnInit {
 
   getOrder(): void {
     const orderId = +this.route.snapshot.paramMap.get('orderId')!;
-    this.orderService.getOrder(orderId).subscribe(order => this.order = order);
+    this.orderService.getOrder(orderId).subscribe(order => this.order = order, error => console.log(error));
   }
   
   saveOrder(newOrder: NgForm): void {
     if (newOrder.value.name != "") {
       this.order.name = newOrder.value.name;
     }
-    this.orderService.editOrder(this.order).subscribe( () => this.router.navigate(['orders/'] ));
+    this.orderService.editOrder(this.order).subscribe( () => this.router.navigate(['orders/']), error => console.log(error));
   }
 
   getEmployes(): void {

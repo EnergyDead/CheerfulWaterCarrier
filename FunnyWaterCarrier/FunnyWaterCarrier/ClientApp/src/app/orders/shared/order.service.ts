@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Action } from 'rxjs/internal/scheduler/Action';
+
 import { Order } from 'src/app/dto/Order';
 
 @Injectable({ providedIn: 'root' })
@@ -29,14 +29,12 @@ export class OrderService {
 
     public addOrder(order: Order): Observable<Order> {
         const url = `${this.baseUrl}api/order/add`;
-        // todo: проверить, может что-то ещё нужно
         return this.http.post<Order>(url, order, this.httpOptions);
     }
 
     public editOrder(order: Order): Observable<Order> {
         const url = `${this.baseUrl}api/order/${order.orderId}/edit`;
-        // todo: проверить, может что-то ещё нужно
-        return this.http.post<Order>(url, order);
+        return this.http.post<Order>(url, order, this.httpOptions);
     }
 
     public deleteOrder(id: number): Observable<boolean> {

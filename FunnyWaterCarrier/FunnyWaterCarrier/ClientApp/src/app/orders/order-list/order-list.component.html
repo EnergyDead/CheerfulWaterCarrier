@@ -1,7 +1,7 @@
 <div class="list-order">
     <div *ngFor="let order of orders"  class="order-blick link d-flex">
         <div (click)="goTo(order.orderId)" class="order">
-          <div class="order-id">{{order.orderId}}</div>
+          <div class="order-id">номер: {{order.orderId}}</div>
           {{order.name.substring(0, 80)}}          
         </div>
     </div>

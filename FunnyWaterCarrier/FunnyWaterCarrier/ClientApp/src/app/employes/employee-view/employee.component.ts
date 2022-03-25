@@ -47,7 +47,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   getSubdivision(id: number):void {
-    this.subdivisionService.getSubdivision(id).subscribe(subdivision => this.subdivision = subdivision);
+    this.subdivisionService.getSubdivision(id).subscribe(subdivision => this.subdivision = subdivision, error => console.log(error));
   }
 
   goToEdit(id: number):void {
@@ -55,7 +55,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   delete(): void {
-    this.employeeService.deleteEmployee(this.employee.employeeId).subscribe( _ => this.router.navigate([`employes`]) );
+    this.employeeService.deleteEmployee(this.employee.employeeId).subscribe( _ => this.router.navigate([`employes`]), error => console.log(error) );
   }
 
   goToSubdivision(id: number): void {

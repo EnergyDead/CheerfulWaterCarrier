@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Order } from 'src/app/dto/Order';
 import { OrderService } from '../shared/order.service';
 
@@ -24,7 +25,7 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrders(): void {
-    this.ordersService.getOrders().subscribe(orders => this.orders = orders);
+    this.ordersService.getOrders().subscribe(orders => this.orders = orders, error => console.log(error));
   }
 
   goTo(id: number):void {

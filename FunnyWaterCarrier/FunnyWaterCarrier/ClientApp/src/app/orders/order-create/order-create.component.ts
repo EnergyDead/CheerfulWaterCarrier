@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { Employee } from 'src/app/dto/Employee';
 import { Order } from 'src/app/dto/Order';
 import { EmployeeService } from 'src/app/employes/shared/employee.service';
@@ -18,7 +19,6 @@ export class CreateOrderComponent implements OnInit {
   employes: Employee[] = [];
   selectedEmployee: number = 0;
   isError: boolean = false;
-  order: Order = {} as Order;
 
   constructor(
     private router: Router,
@@ -30,17 +30,20 @@ export class CreateOrderComponent implements OnInit {
     this.getEmployes();
   }
 
-  addOrder(newOrder: Order, create: NgForm) {
-    newOrder = <Order>{};
-    newOrder.orderId = 0;
-    newOrder.name = create.value.name;
-    newOrder.employeeId = this.selectedEmployee;
-    if (newOrder.name !== "" && newOrder.employeeId !== undefined) {
-      this.orderService.addOrder(newOrder).subscribe( () => this.router.navigate(['orders/'] ));
-    } else { this.isError = true}
+  addOrder(orderName: NgForm) {
+    const newOrder = <Order>{
+      name: orderName.value.name,
+      employeeId: this.selectedEmployee
+    };
+    if (newOrder.name =="" || newOrder.employeeId == undefined) {
+      this.isError = true;
+      return;
+    }
+
+    this.orderService.addOrder(newOrder).subscribe( () => this.router.navigate(['orders/']), error => console.log(error));
   }
 
   getEmployes(): void {
-    this.employeeService.getEmployes().subscribe(employes => this.employes = employes );
+    this.employeeService.getEmployes().subscribe(employes => this.employes = employes, error => console.log(error));
   }
 }

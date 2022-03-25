@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Employee } from 'src/app/dto/Employee';
 import { Order } from 'src/app/dto/Order';
 import { EmployeeService } from 'src/app/employes/shared/employee.service';
@@ -37,7 +38,7 @@ export class OrderComponent implements OnInit {
   }
 
   getExecutor(id: number): void {
-    this.employeeService.getEmployee(id).subscribe(employee => this.executor = employee );
+    this.employeeService.getEmployee(id).subscribe(employee => this.executor = employee, error => console.log(error));
   }
   
   goToExecutor(id: number):void {
@@ -49,6 +50,6 @@ export class OrderComponent implements OnInit {
   }
 
   delete(): void {
-    this.ordersService.deleteOrder(this.order.orderId).subscribe(_ => this.router.navigate([`orders`]));
+    this.ordersService.deleteOrder(this.order.orderId).subscribe(_ => this.router.navigate([`orders`]), error => console.log(error));
   }
 }
